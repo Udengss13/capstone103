@@ -142,7 +142,7 @@
                 </div>
 
                 <!-- <div class="card"> -->
-                <div class="card-body">
+                <div class="card-body bg-light p-4">
                     <form action="" method="POST">
                         <table class="table table-striped table table-bordered">
                             <thead>

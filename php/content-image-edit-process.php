@@ -27,7 +27,7 @@ session_start();
          
          if(mysqli_query($db_admin_account, $query)){
           $_SESSION['update_changes'] = "Your data has been edited successfully";
-          header('location: ../admin-edit-content.php?updateid='.$contentimageid);
+          header('location: ../admin-content.php?updateid='.$contentimageid);
          }
        }      
 }

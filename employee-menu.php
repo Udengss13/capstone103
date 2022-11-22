@@ -118,8 +118,9 @@
 
 
             <!--Displaying Data -->
-            <div class="container-fluid mt-4">
-                <table class="table table-striped table table-bordered">
+
+            <div class="container-fluid mt-4 bg-light p-4">
+                <table class="table table-striped table table-bordered ">
                     <!-- <div class="row"> -->
                     <thead>
                         <tr>

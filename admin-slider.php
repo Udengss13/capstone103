@@ -101,7 +101,7 @@ $result = $db_admin_account->query("SELECT image_path from admin_carousel_homepa
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
                                 <li><a class="dropdown-item" href="admin-content.php">Announcement</a></li>
                                 <li><a class="dropdown-item" href="admin-slider.php">Slider</a></li>
-                                <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li>
+                                <!-- <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li> -->
                             </ul>
                         </li>
                         <li class="nav-item">

@@ -27,6 +27,8 @@
 
 
 
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/product.css">
 
 
     <!-- SLIDER Images -->
@@ -78,19 +80,19 @@
         </div>
     </div>
 
-    <!--QUICKTIPS-->
-    <section class="flex-sect" id="imagesec">
+ <!--QUICKTIPS-->
+ <section class="flex-sect" id="imagesec">
         <section id="imagesection" class="div_background_light py-4">
             <div class="container-fluid px-5">
                 <div class="col-lg-12 col-md-12">
-                <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                            <span style="font-size: 40px; background-color:#9FBACD; color: white">
-                                QUICKTIPS
-                                <!--Padding is optional-->
-                            </span>
-                        </div>
+                    <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                        <span style="font-size: 40px; background-color:#9FBACD; color: white">
+                            QUICKTIPS
+                            <!--Padding is optional-->
+                        </span>
+                    </div>
                     <div class="row mt-5">
-                        
+
                         <?php
                          $querymenu = "SELECT * FROM quicktips"; 
                          $resultmenu = mysqli_query($con, $querymenu);  
@@ -98,10 +100,11 @@
                             $str = $rowmenu['link'];
                             $code = explode("?v=",$str);
                         ?>
-                        <div class="col-md-5 m-5">
-                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $code[1]; ?>"></iframe>
+                        <div class="col-md-6">
+                            <iframe width="100%" height="500"
+                                src="https://www.youtube.com/embed/<?php echo $code[1]; ?>"></iframe>
                         </div>
-                        
+
                         <?php } ?>
                     </div>
                 </div>
@@ -109,46 +112,19 @@
         </section>
     </section>
 
-    <!-- About us -->
-    <section class="flex-sect" id="about" style="background-color:#9FBACD;">>
-        <section id="imagesection" class="div_background_light py-4">
-            <div class="container-fluid px-5">
-            <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                            <span style="font-size: 40px; background-color:#9FBACD; color: white">
-                                ABOUT US
-                                <!--Padding is optional-->
-                            </span>
-                        </div>
-                <div class="col-lg-12 col-md-12">
-                            <br><br>
-                        
-                        
-                        <div class="row box " style="height:300px;">
-                        
-                        <h4 style="font-size:1.7vw;" class="justify-content">PetCo. Animal Clinic was established in June 2021, and
-                            they started offering services in their Grand Opening last July 3, 2021.
-                            Mr. Karl Ken Sto owned it. Domingo. It started with just an Idea of having a Pet Shop
-                            because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto. Domingo’s
-                            pets. He also sees that some people around their area have to go too far to find an
-                            accessible Pet Clinic,
-                            and that is where they started building the PetCo. Their intention to provide an accessible
-                            Pet Clinic around their area is why their ideas turned into a Clinic that offers many pet
-                            services. The PetCo. Animal Clinic is currently residing at 389 Parada, Sta. Maria, Bulacan,
-                            their main branch.
-                            PetCo. Animal Clinic specializes in Vaccination, Consultation, Confinement, Surgery, Pet
-                            Supplies, etc., for cats and dogs only.</h4>
-                        </div>
 
-                       <!--ANNOUNCEMENT-->
     <section class="flex-sect" id="imagesec">
         <section id="imagesection" class="div_background_light py-4">
             <div class="container-fluid px-5 mt-3">
                 <div class="col-lg-12 col-md-12">
                     <div class="justify-content-center row col-md-12 rounded-3">
-                        <h3 class="col-12  text-center fw-bolder"
-                            style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
-                            ANNOUNCEMENT</h3>
-                        <hr>
+                    <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                        <span style="font-size: 40px; background-color:#9FBACD; color: white">
+                            ANNOUNCEMENT
+                            <!--Padding is optional-->
+                        </span>
+                    </div>
+                        
 
                         <!--Pictures-->
 
@@ -182,28 +158,81 @@
             </div>
         </section>
     </section>
-                        <!--Footer-->
-                        <footer class="footer-banner" id="about">
-                            <div class="container text">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <ul class="follow">
-                                            <h3>Please follow us</h3>
 
-                                            <a href="https://www.facebook.com/"><img src="asset/facebook.png"
-                                                    width="50px" height="40px"></a>
-                                            <a href="https://www.instagram.com//"><img src="asset/instagram.png"
-                                                    width="50px" height="40px"></a>
-                                            <a href="https://www.messenger.com/"><img src="asset/messenger.png"
-                                                    width="50px" height="40px"></a>
-                                        </ul>
-                                        <h5>© 2022 All Rights Reserved. PetCo. Animal Clinic.</h5>
-                                    </div>
-                                </div>
+    <section class="flex-sect" id="about" style="background-color:#9FBACD;">>
+        <section id="imagesection" class="div_background_light py-4">
+            <div class="container-fluid px-5">
+                <div class="col-lg-12 col-md-12">
+                    <div class="justify-content-center row col-md-12 rounded-3">
+                        <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                            <span style="font-size: 40px; background-color:#9FBACD; color: white">
+                                ABOUT US
+                                <!--Padding is optional-->
+                            </span>
+                        </div>
+                        <div class="row box mt-4">
+                            <div class="col bg-light p-4 rounded shadow">
+                                <h4 style=" text-align: justify">&emsp;PetCo. Animal Clinic was established in June
+                                    2021, and
+                                    they started offering services in their Grand Opening last July 3, 2021.
+                                    Mr. karl ken sto domingo
+                                    owned it. Domingo. 
+                                    <br>&emsp;
+                                    It started with just an Idea of having a Pet Shop
+                                    because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.
+                                    Domingo’s
+                                    pets. He also sees that some people around their area have to go too far to find an
+                                    accessible Pet Clinic,
+                                    and that is where they started building the PetCo. Their intention to provide an
+                                    accessible
+                                    Pet Clinic around their area is why their ideas turned into a Clinic that offers
+                                    many
+                                    pet
+                                    services. The PetCo. Animal Clinic is currently residing at 389 Parada, Sta. Maria,
+                                    Bulacan,
+                                    their main branch.
+                                    <br>&emsp;PetCo. Animal Clinic specializes in Vaccination, Consultation,
+                                    Confinement, Surgery, Pet
+                                    Supplies, etc., for cats and dogs only.
+                                </h4>
                             </div>
+                            <div class="col">
+                                <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
+                                    style="height:500px; width:100%;">
+                                <center>
+                                    <h5>Mr. karl ken sto domingo
+                                    </h5>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 
 
-                        </footer>
+    <footer class=" footer-banner" id="about">
+        <div class="container text">
+            <div class="row">
+                <div class="col-13 text-center">
+                    <ul class="follow" style="color: white;">
+                        <h3>Please follow us</h3>
+
+                        <a href="https://www.facebook.com/PetCoAnimalClinic"><img src="asset/facebook.png" width="40px"
+                                height="40px"></a>
+                        <a href="https://www.instagram.com//"><img src="asset/instagram.png" width="40px"
+                                height="40px"></a>
+                        <a href="https://www.messenger.com/"><img src="asset/messenger.png" width="40px"
+                                height="40px"></a>
+                    </ul>
+                    <h5>© 2022 All Rights Reserved. PetCo. Animal Clinic.</h5>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
 
 
 
