@@ -102,7 +102,7 @@ $userresult = mysqli_query($con, $queryimage);
 
                     <!-- Modal Header -->
                     <div class="modal-header bg">
-                        <h4 class="modal-title text-light">Appointment Form</h4>
+                        <h4 class="modal-title ">Appointment Form</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
@@ -159,7 +159,7 @@ $userresult = mysqli_query($con, $queryimage);
                                             <div class="col-4 ">
 
                                                 <?php $select_pet = mysqli_query($con, "SELECT * FROM pettable WHERE user_id = '$user_id'");?>
-                   
+
 
                                                 <select name="petname">
                                                     <option value="" name="select_all">Select Pet</option>
@@ -206,79 +206,80 @@ $userresult = mysqli_query($con, $queryimage);
 
 
         <!--Displaying Data -->
-        <div class="container mt-4 ">
-            <table class="table table-striped table table-bordered">
-                <!-- <div class="row"> -->
+        <div class="container mt-4 bg-light p-4">
+            <div class="col ">
+                <table class=" table table-striped table table-bordered table table-hover">
+                    <!-- <div class="row"> -->
 
-                <?php 
+                    <?php 
           $select_cart = mysqli_query($con, "SELECT * FROM `client_appointment`WHERE user_id = '$user_id' ORDER BY `client_appointment`.`appoint_date` ASC ");
           $grand_total = 0;
 
                 if(mysqli_num_rows($select_cart) > 0){
                     ?>
-                <thead>
+                    <thead>
 
-                    <div class="row">
+                        <div class="row tex-dark">
 
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Appointment No.</div>
-                        </th>
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Service Type</div>
-                        </th>
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Pet Name</div>
-                        </th>
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Date</div>
-                        </th>
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Time</div>
-                        </th>
-                        <th scope="col" style="text-align: center;">
-                            <div class="col">Status</div>
-                        </th>
-                        </tr>
-                </thead>
-                <?php
+                            <th scope="col" style="text-align:;">
+                                <div class="col">Appointment No.</div>
+                            </th>
+                            <th scope="col" style="text-align: ">
+                                <div class="col">Service Type</div>
+                            </th>
+                            <th scope="col" style="text-align: ;">
+                                <div class="col">Pet Name</div>
+                            </th>
+                            <th scope="col" style="text-align:;">
+                                <div class="col">Date</div>
+                            </th>
+                            <th scope="col" style="text-align: ;">
+                                <div class="col">Time</div>
+                            </th>
+                            <th scope="col" style="text-align: ;">
+                                <div class="col">Status</div>
+                            </th>
+                            </tr>
+                    </thead>
+                    <?php
                     while($fetch_cart = mysqli_fetch_assoc($select_cart)):   
                     ?>
-                <tr class="text-light ">
-                    <!--Image-->
+                    <tr class=" ">
+                        <!--Image-->
 
-                    <td class="align-middle "><?= $fetch_cart['appoint_no'];?></td>
-                    <!--Price-->
-                    <td class="align-middle">
-                        <?php echo $fetch_cart['service'];?>
-                    </td>
-                    <td class="align-middle">
-                        <?php echo $fetch_cart['petname'];?>
-                    </td>
-                    <td class="align-middle">
-                        <?php echo $fetch_cart['appoint_date'];?>
-                    </td>
-                    <td class="align-middle">
-                        <?php echo $fetch_cart['appoint_time'];?>
-                    </td>
-                    <td class="align-middle">
-                        <?php echo $fetch_cart['status'];?>
-                    </td>
-                <tr>
-                    <?php
+                        <td class="align-middle "><?= $fetch_cart['appoint_no'];?></td>
+                        <!--Price-->
+                        <td class="align-middle">
+                            <?php echo $fetch_cart['service'];?>
+                        </td>
+                        <td class="align-middle">
+                            <?php echo $fetch_cart['petname'];?>
+                        </td>
+                        <td class="align-middle">
+                            <?php echo $fetch_cart['appoint_date'];?>
+                        </td>
+                        <td class="align-middle">
+                            <?php echo $fetch_cart['appoint_time'];?>
+                        </td>
+                        <td class="align-middle">
+                            <?php echo $fetch_cart['status'];?>
+                        </td>
+                    <tr>
+                        <?php
                     endwhile;
                 }
 
                  else{
                     ?><tbody class="text-light ">
-                        <center>
-                            <h1><img src="asset/oops.png" alt="Logo" class="rounded" /></h1>
-                        </center>
-                    </tbody><?php
+                            <center>
+                                <h1><img src="asset/oops.png" alt="Logo" class="rounded" /></h1>
+                            </center>
+                        </tbody><?php
                 }
         
             ?>
 
-
+            </div>
         </div>
     </div>
 </div>

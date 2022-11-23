@@ -211,7 +211,7 @@
 
             <!--Displaying data in table-->
            
-            <div class="container-fluid mt-4">
+            <div class="container-fluid mt-4 bg-light p-4">
                 <table class="table table-striped table table-bordered">
                     <!-- <div class="row"> -->
                     <thead>
@@ -231,7 +231,7 @@
                                     <div class="col">Body</div>
                                 </th>
                                 <th scope="col">
-                                    <div class="col">Delete</div>
+                                    <div class="col">Action</div>
                                 </th>
                         </tr>
                     </thead>

@@ -282,8 +282,8 @@
 </head>
 
 <body style="background:  #9FBACD;">
-<!--Navbar-->
-<div class="nav-bar container-fluid overflow-hidden">
+    <!--Navbar-->
+    <div class="nav-bar container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 d-flexs sticky-top">
                 <div
@@ -309,17 +309,19 @@
                             </a>
                         </li>
 
-                        
+
                         <?php 
                         $selectMessages = mysqli_query($con,"SELECT * FROM `messages` WHERE seen = 0 AND sender_id != 'petko'") or die ('query failed');
                         $count_message = mysqli_num_rows($selectMessages);
                         ?>
                         <li>
                             <a href="admin-message.php" class="nav-link px-sm-0 px-2">
-                                <i class="fa fa-envelope text-white"></i><span class="ms-1 d-none d-sm-inline"> Messages <?php if($count_message>0){ ?><span class="badge badge-danger text-white bg-danger"><?php echo $count_message; ?></span><?php } ?></span>
+                                <i class="fa fa-envelope text-white"></i><span class="ms-1 d-none d-sm-inline"> Messages
+                                    <?php if($count_message>0){ ?><span
+                                        class="badge badge-danger text-white bg-danger"><?php echo $count_message; ?></span><?php } ?></span>
                             </a>
                         </li>
-                        
+
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -353,8 +355,9 @@
                                     class="ms-1 d-none d-sm-inline">Content</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                                <li><a class="dropdown-item" href="admin-content.php">Announcement</a></li>
                                 <li><a class="dropdown-item" href="admin-slider.php">Slider</a></li>
-                                <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li>
+                                <!-- <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li> -->
                             </ul>
                         </li>
                         <li class="nav-item">
