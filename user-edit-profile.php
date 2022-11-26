@@ -43,7 +43,7 @@
 
         <h4 class="text-center c-white py-3 text-light">Edit Profile </h4>
 
-        <form action="php/profile-edit-process.php" method="post" enctype="multipart/form-data">
+        <form action="php/profile-edit-process.php" method="post" enctype="multipart/form-data" onsubmit ="return verifyPassword()">
             <div class="row justify-content-md-center mb-5 ">
 
                 <!-- <div class="col-lg-7 col-md-6 col-sm-12"> -->
@@ -164,6 +164,31 @@
 
     </form>
     </div>
+
+    <script>  
+function verifyPassword() {  
+  var pw = document.getElementById("pswd").value;  
+  //check empty password field  
+  if(pw == "") {  
+     document.getElementById("message").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+ //minimum password length validation  
+  if(pw.length < 8) {  
+     document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";  
+     return false;  
+  }  
+  
+//maximum length of password validation  
+  if(pw.length > 15) {  
+     document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  } else {  
+     alert("Password is correct");  
+  }  
+}  
+</script> 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

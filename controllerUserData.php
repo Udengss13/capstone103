@@ -41,11 +41,11 @@ $errors = array();
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
         $contact = mysqli_real_escape_string($con, $_POST['contact']);
-        $pettype = mysqli_real_escape_string($con, $_POST['pettype']);
-        $petbreed = mysqli_real_escape_string($con, $_POST['petbreed']);
-        $petname = mysqli_real_escape_string($con, $_POST['petname']);
-        $petsex = mysqli_real_escape_string($con, $_POST['petsex']);
-        $petbday = date('Y-m-d', strtotime($_POST['petbday']));
+        // $pettype = mysqli_real_escape_string($con, $_POST['pettype']);
+        // $petbreed = mysqli_real_escape_string($con, $_POST['petbreed']);
+        // $petname = mysqli_real_escape_string($con, $_POST['petname']);
+        // $petsex = mysqli_real_escape_string($con, $_POST['petsex']);
+        // $petbday = date('Y-m-d', strtotime($_POST['petbday']));
         
         $filenamedir = "asset/profiles/".$_FILES["photo"]["name"];
         $filename = $_FILES["photo"]["name"];
@@ -78,9 +78,9 @@ $errors = array();
             if($data_check1){
                 $user_id = $con->insert_id;
                 foreach ($_POST['pettype'] as $key => $value) {
-                $petbday = date('Y-m-d', strtotime($_POST['petbday']));
+                $petbday = date('Y-m-d', strtotime($_POST['petbday'][$key]));
                  $query1 = "INSERT INTO `pettable`(`user_id`, `pettype`, `petbreed`, `petname` ,`petsex`, `petbday`) 
-                 VALUES ('" . $user_id . "','" . $_POST['pettype'][$key] . "', '" . $_POST['petbreed'][$key] . "', '" . $_POST['petname'][$key] . "' , '" . $_POST['petsex'][$key] . "', '" .date('Y-m-d', strtotime($_POST['petbday']))[$key] . "')";
+                 VALUES ('" . $user_id . "','" . $_POST['pettype'][$key] . "', '" . $_POST['petbreed'][$key] . "', '" . $_POST['petname'][$key] . "' , '" . $_POST['petsex'][$key] . "', ' $petbday')";
                  $data_check = mysqli_query($con, $query1); 
                 }
           
