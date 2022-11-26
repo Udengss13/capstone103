@@ -5,7 +5,7 @@
     $user_id = $_SESSION['user_id'];
 
     if(!isset($user_id)){
-      header('location: login-user.php');
+      header('location: index.php');
     }
     
     
@@ -195,15 +195,15 @@
                     echo "<script>window.open('appointment_list.php','_self');</script>";
                 }
             }
-            if(isset($_POST['cancel_submit'])){
-                $id = $_POST['id'];
+            // if(isset($_POST['cancel_submit'])){
+            //     $id = $_POST['id'];
 
-                $approved_query = "UPDATE client_appointment SET `status`='cancelled' WHERE id='$id'";
-                $run_approved = mysqli_query($con, $approved_query);
-                if($run_approved){
-                    echo "<script>window.open('appointment_list.php','_self');</script>";
-                }
-            }
+            //     $approved_query = "UPDATE client_appointment SET `status`='cancelled' WHERE id='$id'";
+            //     $run_approved = mysqli_query($con, $approved_query);
+            //     if($run_approved){
+            //         echo "<script>window.open('appointment_list.php','_self');</script>";
+            //     }
+            // }
             if(isset($_POST['serve_submit'])){
                 $id = $_POST['id'];
 

@@ -16,22 +16,32 @@
 
 <head>
 
-    <head>
-        <title>PetCo Homepage</title>
-        <link rel="icon" href="asset/logopet.png" type="image/x-icon">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>PetCo Homepage</title>
 
-    </head>
+    <link rel="icon" href="asset/logopet.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta https-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/f8f3c8a43b.js" crossorigin="anonymous"></script>
+
+    <!-- slider -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
 
 <body>
-    <!--navbar-->
     <!--Navigation Bar-->
-    <nav class="navbar navbar-expand-lg navbar-light ; ">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="asset/logopet.png" alt="Logo" class="logo" />
@@ -55,19 +65,26 @@
                 </div>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="aboutUs.php">ABOUT US</a>
+                        <div class="dropdown">
+                            <a class="nav-link text-white dropdown-toggle" href="#" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">SERVICES</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Vaccination</a></li>
+                                <li><a class="dropdown-item" href="#">Confinement</a></li>
+                                <li><a class="dropdown-item" href="#">Pet Supplies</a></li>
+                                <li><a class="dropdown-item" href="#">Consultation</a></li>
+                                <li><a class="dropdown-item" href="#">Surgery</a></li>
+                                <li><a class="dropdown-item" href="#">Treatment</a></li>
+                                <li><a class="dropdown-item" href="#">Deworming</a></li>
+                                <li><a class="dropdown-item" href="#">Grooming</a></li>
+                                <li><a class="dropdown-item" href="#">Laboratory Tests</a></li>
+
+                            </ul>
+
+                        </div>
                     </li>
                 </div>
-                <div class="text-nowrap">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="services.php">SERVICES</a>
-                    </li>
-                </div>
-                <div class="text-nowrap">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="shop.php">SHOP</a>
-                    </li>
-                </div>
+
                 <div class="text-nowrap">
                     <li class="nav-item">
 
@@ -75,9 +92,19 @@
 
                     </li>
                 </div>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#about">ABOUT US</a>
+                    </li>
+                </div>
+
+
+
+
                 <!-- <div class=" text-white">
          <?php echo  date("m/d/y") . "<br>"; ?>
        </div> -->
+                <!--
                 <div class="text-nowrap">
                     <li class="nav-item">
                         <a class="nav-link text-white" href="login-user.php">SIGN IN</a>
@@ -90,9 +117,9 @@
                     </li>
                 </div>
             </ul>
+-->
         </div>
     </nav>
-
 
     <section id="#home">
         <div class="container mt-4">

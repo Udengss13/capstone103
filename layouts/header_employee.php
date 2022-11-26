@@ -10,7 +10,7 @@
      $fetch = mysqli_fetch_assoc($resultimage); 
      };
 
-     if(!isset($user_id) ){
+ if(!isset($user_id) ){
          header('location: index.php');
        }
 

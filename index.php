@@ -12,6 +12,8 @@
 <?php
   $quicktipsquery = "SELECT * FROM admin_quicktips"; //You dont need like you do in SQL;
   $quicktipsresult = mysqli_query($db_admin_account, $quicktipsquery);
+
+  
   ?>
 
 <!DOCTYPE html>
@@ -152,24 +154,16 @@
                 <h4 class="text-center">Please log-in you personal info</h4>
             </div>
             <div class="col-md-7 col-lg-4 col-sm-4 mt-5 form login-form">
-                <form action="login-user.php" method="POST" autocomplete="">
+                <form action="" method="POST" autocomplete="">
                     <h1 class="text-center  mt-3 text-primary">Sign In</h1>
 
                     <?php
-                        if(count($errors) > 0)
-                        {
-                            ?>
-                    <div class="alert alert-danger text-center">
-                        <?php
-                            foreach($errors as $showerror)
-                            {
-                                echo $showerror;
-                            }
-                             ?>
-                    </div>
-                    <?php
-                        }
-                        ?>
+                    
+                    if (isset($_SESSION["error"])){ ?>
+                        <div class="alert alert-danger bg-danger text-center text-white">
+                        <?=$_SESSION["error"]; ?> </div>
+
+                    <?php  unset($_SESSION["error"]); } ?>
                     <div class="form-group">
                         <input class="form-control mb-3" type="email" name="email" placeholder="Email Address" required
                             value="<?php echo $email ?>">
@@ -182,7 +176,9 @@
                             password?</a>
                     </div>
                     <div class="form-group">
+                       
                         <input class="form-control button" type="submit" name="login" value="Sign In">
+                           
                     </div>
                     <div class="link login-link text-center mb-1 mt-3">Don't have an account? <a
                             href="signup-user.php">Sign up
@@ -349,7 +345,7 @@
                                     2021, and
                                     they started offering services in their Grand Opening last July 3, 2021.
                                     Mr. karl ken sto domingo
-                                    owned it. Domingo. 
+                                    owned it. Domingo.
                                     <br>&emsp;
                                     It started with just an Idea of having a Pet Shop
                                     because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.

@@ -6,9 +6,7 @@
     //GET USER ID IN REGISTRATION
     $user_id = $_SESSION['user_id'];
 
-    if(!isset($user_id)){
-      header('location: login-user.php');
-    }
+    
 
     //  To Update the Quantity
      if(isset($_POST['update_update_btn'])){

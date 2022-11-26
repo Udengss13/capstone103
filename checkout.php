@@ -6,9 +6,7 @@
 
     // $cart = $_SESSION['submit_order'];
 
-    if(!isset($user_id)){
-      header('location: login-user.php');
-    }
+  
 ?>
 <?php
   //This is for calling the informaiton of user in fields.

@@ -5,7 +5,7 @@
     $user_id = $_SESSION['user_id'];
 
     if(!isset($user_id)){
-      header('location: login-user.php');
+      header('location: index.php');
     }
     $update = mysqli_query($con, "UPDATE messages SET seen=1 WHERE employee_id=$user_id AND sender_id='petko'");
 
