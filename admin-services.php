@@ -81,8 +81,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://kit.fontawesome.com/f8f3c8a43b.js" crossorigin="anonymous"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <title>Admin || Dashboard</title>
 
 <head>
@@ -409,10 +408,10 @@
                         <div class="card">
                             <div class="card-header row">
                                 <div class="col-md-6">
-                                    Quicktips
+                                    Services
                                 </div>
                                 <div class="col-md-6" align="right">
-                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Quicktips</button>
+                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Service</button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -420,20 +419,23 @@
                                     <table class="table table-hover table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>link</th>
                                                 <th>Service</th>
+                                                <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <?php 
-                                            $querymenu = "SELECT * FROM quicktips"; 
+                                            $querymenu = "SELECT * FROM `service`"; 
                                             $resultmenu = mysqli_query($con, $querymenu);  
                                             while($rowmenu =  mysqli_fetch_array($resultmenu)){
                                         ?>
                                         <tr>
-                                            <td><?php echo $rowmenu['link']; ?></td>
-                                            <td><?php echo $rowmenu['category']; ?></td>
-                                            <td><a class="btn btn-sm btn-danger delete" data-id="<?php echo $rowmenu['id']; ?>"><span class="fa fa-times"></span></a> </td>
+                                            <td><?php echo $rowmenu['service_name']; ?></td>
+                                            <td><?php echo $rowmenu['description']; ?></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-danger delete" data-id="<?php echo $rowmenu['service_id']; ?>"><span class="fa fa-times"></span></a> 
+                                                <a class="btn btn-sm btn-warning update" data-id="<?php echo $rowmenu['service_id']; ?>"><span class="fa fa-pencil text-white"></span></a>
+                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </table>
@@ -444,31 +446,22 @@
             </div>
               <!-- ====================================================================================================== -->
             <div id="add-modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add Quicktips Link</h5>
+                                <h5 class="modal-title">Add Service</h5>
                             </div>
                             <div class="modal-body">
                                 <form id="add-form" method="POST">
                                     <div class="form-group mb-3">
-                                        <label>Link</label>
-                                        <input class="form-control" type="text" required name="link"/>
+                                        <label>Service</label>
+                                        <input class="form-control" type="text" required name="name"/>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label>Services</label>
-                                        <select class="form-control" required name="service">
-                                            <option value="">Select Service</option>
-                                            <?php
-                                                 $query_service = "SELECT * FROM `service`"; 
-                                                 $result_service = mysqli_query($con, $query_service);  
-                                                 while($row_service =  mysqli_fetch_array($result_service)){
-                                            ?>
-                                            <option value="<?php echo $row_service['service_name'] ?>"><?php echo $row_service['service_name'] ?></option>
-
-                                            <?php } ?>
-                                        </select>
+                                        <label>Description</label>
+                                        <textarea id="summernote" class="form-control" name="description" ></textarea>
                                     </div>
+                                   
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -478,19 +471,59 @@
                         </div>
                     </div>
                 </div>
+                <div id="update-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Update Service</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form id="update-form" method="POST">
+                                    <div class="form-group mb-3">
+                                        <label>Service</label>
+                                        <input class="form-control" type="text" required name="uname"/>
+                                        <input class="form-control" type="hidden" name="service-id"/>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Description</label>
+                                        <textarea id="usummernote" class="form-control" name="udescription" ></textarea>
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" name="update-submit" form="update-form">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <?php
             if(isset($_POST['submit-link'])){
-                $link = $_POST['link'];
-                $service = $_POST['service'];
-                $insertavailable = "INSERT INTO quicktips (link,category) VALUES ('$link','$service')";
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $insertavailable = "INSERT INTO `service` (`service_name`,`description`) VALUES ('$name','$description')";
                 $run_query = mysqli_query($con, $insertavailable);
                 if($run_query){
-                    echo "<script>window.open('quicktips_content.php','_self');</script>";
+                    echo "<script>window.open('admin-services.php','_self');</script>";
+                }
+            }
+            if(isset($_POST['update-submit'])){
+                $name = $_POST['uname'];
+                $description =str_replace("'",'',$_POST['udescription']);
+                $id = $_POST['service-id'];
+                $updateQuery = "UPDATE `service` SET `service_name`='$name', `description`='$description' WHERE service_id = '$id'";
+        
+                $run_querys = mysqli_query($con, $updateQuery);
+                
+                if($run_querys){
+                 
+                    echo "<script>window.open('admin-services.php','_self');</script>";
                 }
             }
             if(isset($_POST['delete_submit'])){
                 $id = $_POST['id'];
-                $del_query = "DELETE FROM quicktips WHERE id = '$id'";
+                $del_query = "DELETE FROM `service` WHERE service_id = '$id'";
                 $result = mysqli_query($con, $del_query);
                
             }   
@@ -504,7 +537,8 @@
 
 
             <!--DIVISION -->
-
+            
+           
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
@@ -512,13 +546,33 @@
             </script>
             <script src="/js/script.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
             <script>
             $(document).ready(function(index) {
+                $('#summernote').summernote({
+                    height:400
+                });
                 $(document).on('click','.delete',function(){
                     var id = $(this).data('id');
-                    $.post("quicktips_content.php",{delete_submit:'delte',id:id},function(data){
+                    console.log(id);
+                    $.post("admin-services.php",{delete_submit:'delte',id:id},function(data){
                         location.reload();
                     });
+                });
+                $('#usummernote').summernote({
+                            height:400
+                        });
+                $(document).on('click','.update',function(){
+                    var id = $(this).data('id');
+                    $('input[name="service-id"]').val(id);
+                    $.post("service_data.php",{id:id},function(data){
+                        var new_data = JSON.parse(data);
+                        $('input[name="uname"]').val(new_data['service_name']);
+                        // $('textarea[name="udescription"]').val(new_data['description']);
+                       
+                        $("#usummernote").summernote("code", new_data['description']);
+                    });
+                    $('#update-modal').modal('show');
                 });
             });
             </script>
