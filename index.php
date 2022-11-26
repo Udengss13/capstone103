@@ -418,7 +418,7 @@
         </section>
     </section>
     <footer class="footer-banner text-center" id="about">
-        <h1 class="text-white" style="padding-top:20px;">Mystery Code</h1>
+        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
         <p class="text-white">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
         <div class="container" style="padding-top:100px;">
             <div class="row">
