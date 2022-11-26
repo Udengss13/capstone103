@@ -72,6 +72,11 @@
                                                 required>
                                         </li>
                                         <li class="list-group-item">
+                                            <label>Expiration Date:</label>
+                                            <input name="expiration-date" class="col-12" type="date" min="<?php echo date('Y-m-d'); ?>" 
+                                                required>
+                                        </li>
+                                        <li class="list-group-item">
                                             <label>Category:</label>
 
                                             <div class="input-group flex-nowrap">
@@ -118,9 +123,8 @@
 
 
             <!--Displaying Data -->
-
-            <div class="container-fluid mt-4 bg-light p-4">
-                <table class="table table-striped table table-bordered ">
+            <div class="container-fluid mt-4">
+                <table class="table table-striped table table-bordered">
                     <!-- <div class="row"> -->
                     <thead>
                         <tr>
@@ -137,6 +141,9 @@
                                 </th>
                                 <th scope="col" style="text-align: center;">
                                     <div class="col">Price</div>
+                                </th>
+                                <th scope="col" style="text-align: center;">
+                                    <div class="col">Expiration</div>
                                 </th>
                                 <th scope="col" style="text-align: center;">
                                     <div class="col">Product Type</div>
@@ -170,20 +177,25 @@
                         </td>
                         <td class="col-1" style="text-align: center;">
                             <div class="col">
+                                <?php echo date('F d,Y',strtotime($rowmenu['expiration'])); ?></div>
+                        </td>
+                        
+                        <td class="col-1" style="text-align: center;">
+                            <div class="col">
                                 <?php echo $rowmenu['Menu_category']; ?></div>
                         </td>
                         <td class="col-1">
                             <div class="col">
-                                <a class="text-decoration-none c-green update"
+                                <a class="btn btn-warning  update"
                                     data-id="<?php echo $rowmenu['Menu_id']; ?>">
 
 
                                     <i class="fa-solid fa-pen" style="font-size:25px; padding: 10px"></i>
-
+                                    Update
                                 </a>
-                                <a href="php/menu-process.php?id=<?php echo $rowmenu['Menu_id'];?>">
+                                <a class="btn btn-danger" href="php/menu-process.php?id=<?php echo $rowmenu['Menu_id'];?>">
                                     <i class="fa-solid fa-trash-can"
-                                        style="font-size:25px; color:red; padding: 10px"></i>
+                                        style="font-size:25px; color:red; padding: 10px"></i> Delete
                                 </a>
                             </div>
 
@@ -220,6 +232,11 @@
                                                     <label>Price:</label>
                                                     <input name="price" id="uprice" class="col-md-5" type="number"
                                                         required min="0" step="0.01">
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <label>Expiration Date:</label>
+                                                    <input name="uexpiration-date" class="col-12" type="date" min="<?php echo date('Y-m-d'); ?>" 
+                                                        required>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <label>Category:</label>
@@ -283,6 +300,7 @@
                                     $('#uparagraph').val(query[2]);
                                     $('#ucategory_name').val(query[4]);
                                     $('#uprice').val(query[3]);
+                                    $('input[name="uexpiration-date"]').val(query['expiration']);
                                     console.log(query);
                                 });
                                 $('#update-modal').modal('show');
