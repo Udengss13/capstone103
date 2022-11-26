@@ -1,6 +1,15 @@
 <?php
     require_once "php/user-list-process.php";
     require('php/connection.php');
+    // require_once "php/admin-login-process.php"; 
+
+    // if(isset($_SESSION['admin_id'])){
+        // $admin_id = $_SESSION['admin_id'];
+        // }
+        
+        // if(!isset($admin_id)){
+        //  header('location: admin-login.php');
+        // }
     
 
     
@@ -282,8 +291,7 @@
 </head>
 
 <body style="background:  #9FBACD;">
-    <!--Navbar-->
-    <div class="nav-bar container-fluid overflow-hidden">
+<div class="nav-bar container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 d-flexs sticky-top">
                 <div
@@ -296,18 +304,18 @@
                     </a>
                     <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
                         id="menu">
-                        <li class="nav-item">
+                        <li class="nav-item mb-2">
                             <a href="admin-dashboards.php" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-speedometer2"></i> <span
                                     class="ms-1 d-none d-sm-inline">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="quicktips_content.php" class="nav-link align-middle px-0">
                                 <i class="fs-4 	fa fa-file-video-o"></i> <span
                                     class="ms-1 d-none d-sm-inline">Quicktips</span>
                             </a>
-                        </li>
+                        </li> -->
 
 
                         <?php 
@@ -316,29 +324,29 @@
                         ?>
                         <li>
                             <a href="admin-message.php" class="nav-link px-sm-0 px-2">
-                                <i class="fa fa-envelope text-white"></i><span class="ms-1 d-none d-sm-inline"> Messages
+                                <i class="fs-4 fa fa-envelope text-white"></i><span class="ms-1 d-none d-sm-inline"> Messages
                                     <?php if($count_message>0){ ?><span
                                         class="badge badge-danger text-white bg-danger"><?php echo $count_message; ?></span><?php } ?></span>
                             </a>
                         </li>
 
-                        <li class="dropdown">
+                        <li class="dropdown mb-2">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fs-4 bi-person-lines-fill"></i><span
-                                    class="ms-1 d-none d-sm-inline">Accounts</span>
+                                    class="ms-1 d-none d-sm-inline"> Accounts</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                                <li><a class="dropdown-item" href="#">Admin Accounts</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Admin Accounts</a></li> -->
                                 <li><a class="dropdown-item" href="admin-user-accounts.php">User Accounts</a></li>
-                                <li><a class="dropdown-item" href="#">Employee Accounts</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Employee Accounts</a></li> -->
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link px-sm-0 px-2">
                                 <i class="fs-4 bi-table"></i><span class="ms-1 d-none d-sm-inline">Sales</span></a>
-                        </li>
-                        <li class="dropdown">
+                        </li> -->
+                        <li class="dropdown mb-2">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fs-4 bi-archive"></i><span class="ms-1 d-none d-sm-inline">Archives</span>
@@ -348,19 +356,22 @@
                                 <li><a class="dropdown-item" href="archive-user.php">Owners</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown mb-2">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fs-4 bi-pencil-square"></i><span
                                     class="ms-1 d-none d-sm-inline">Content</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                                <li><a class="dropdown-item" href="admin-content.php">Announcement</a></li>
-                                <li><a class="dropdown-item" href="admin-slider.php">Slider</a></li>
+                                <li><a class="dropdown-item" href="admin-content.php"><i
+                                            class="fs-4   fa fa-bullhorn"></i> Announcement</a></li>
+                                <li><a class="dropdown-item" href="admin-slider.php"><i class="fs-4  fa-solid fa-map"></i> Slider</a></li>
+                                <li><a class="dropdown-item" href="quicktips_content.php"><i
+                                            class="fs-4 	fa fa-file-video-o"></i> Quicktips</a> </li>
                                 <!-- <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li> -->
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mb-2">
                             <a href="admin-orders.php" class="nav-link px-sm-0 px-2">
                                 <i class="fs-4 bi-bag-check"></i><span class="ms-1 d-none d-sm-inline">Orders</span>
                             </a>
@@ -373,8 +384,8 @@
                             <span class="d-none d-sm-inline mx-1">Cha</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li> -->
                             <li><a class="dropdown-item" href="admin-profile.php">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">

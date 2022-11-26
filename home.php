@@ -5,9 +5,7 @@
    
       $user_id = $_SESSION['user_id'];
 
-      if(!isset($user_id)){
-        header('location: login-user.php');
-      }
+      
 
       $start_from = 0; 
         $queryimage = "SELECT * FROM admin_content_homepage"; //You dont need like you do in SQL;

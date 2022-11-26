@@ -4,7 +4,7 @@
    $user_id = $_SESSION['user_id'];
 
    if(!isset($user_id)){
-     header('location: login-user.php');
+     header('location:index.php');
    }
 
    $start_from = 0; 
@@ -45,10 +45,11 @@ $userresult = mysqli_query($con, $queryimage);
         $appointdate = date('Y-m-d', strtotime($_POST['appointdate']));
         $appointtime = date('h:i A', strtotime($_POST['appointtime']));
         $petname =mysqli_real_escape_string($con,$_POST['petname']);
+        $email =mysqli_real_escape_string($con,$_POST['email']);
         
 
-            $sql = "INSERT INTO `client_appointment`( `service`, `appoint_no`, `appoint_date`, `appoint_time`, `petname`, `user_id`) 
-            VALUES ('$service','$appno','$appointdate','$appointtime','$petname','$user_id')";
+            $sql = "INSERT INTO `client_appointment`( `service`, `appoint_no`, `appoint_date`, `appoint_time`, `petname`, `user_id`, `email`) 
+            VALUES ('$service','$appno','$appointdate','$appointtime','$petname','$user_id', '$email')";
 
             if(mysqli_query($con, $sql)){
                 
@@ -133,7 +134,9 @@ $userresult = mysqli_query($con, $queryimage);
                                     </li>
                                     <li class="list-group-item" id="service-content">
 
+
                                     </li>
+
                                     <li class="list-group-item" style="display:none;">
 
                                         <div class="row">
@@ -171,7 +174,23 @@ $userresult = mysqli_query($con, $queryimage);
                                                 </select>
 
                                             </div>
+                                        </div>
+
+
+
                                     </li>
+
+                                    <li class="list-group-item mt-5">
+                                        <div class="row">
+                                            <div class="col">
+                                                <?php $select = mysqli_query($con, "SELECT * FROM usertable WHERE id = '$user_id'");
+                                                 $emaila = mysqli_fetch_array($select, MYSQLI_ASSOC);?>
+                                                <input name="email" class="form-control" type="text"
+                                                    value="<?php echo $emaila['email'];   ?> " hidden>
+                                            </div>
+                                        </div>
+                                    </li>
+
 
 
 

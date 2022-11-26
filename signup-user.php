@@ -56,72 +56,90 @@
 
 </head>
 
+
+
 <body>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="asset/logopet.png" alt="Logo" class="logo" />
+                <span style="text-shadow: 2px 2px 2px  rgba(49, 44, 44, 0.767);" class="text-white"><b>PETCO. ANIMAL
+                        CLINIC</b></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <body>
+        </div>
 
-        <!--Navigation Bar-->
-        <nav class="navbar navbar-expand-lg navbar-light ; ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="asset/logopet.png" alt="Logo" class="logo" />
-                    <span style="text-shadow: 2px 2px 2px  rgba(49, 44, 44, 0.767);" class="text-white"><b>PETCO. ANIMAL
-                            CLINIC</b></span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="collapse navbar-collapse me-3" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-0 my-lg-0 " style="--bs-scroll-height: 100px;">
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white " style="border-radius:10px;" aria-current="page"
+                            href="index.php">HOME</a>
+                    </li>
+                </div>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link text-white dropdown-toggle" href="#" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">SERVICES</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Vaccination</a></li>
+                                <li><a class="dropdown-item" href="#">Confinement</a></li>
+                                <li><a class="dropdown-item" href="#">Pet Supplies</a></li>
+                                <li><a class="dropdown-item" href="#">Consultation</a></li>
+                                <li><a class="dropdown-item" href="#">Surgery</a></li>
+                                <li><a class="dropdown-item" href="#">Treatment</a></li>
+                                <li><a class="dropdown-item" href="#">Deworming</a></li>
+                                <li><a class="dropdown-item" href="#">Grooming</a></li>
+                                <li><a class="dropdown-item" href="#">Laboratory Tests</a></li>
 
-            </div>
+                            </ul>
 
-            <div class="collapse navbar-collapse me-3" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-0 my-lg-0 " style="--bs-scroll-height: 100px;">
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white " style="border-radius:10px; margin-left:3px;"
-                                aria-current="page" href="index.php">HOME</a>
-                        </li>
-                    </div>
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="aboutUs.php">ABOUT US</a>
-                        </li>
-                    </div>
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="services.php">SERVICES</a>
-                        </li>
-                    </div>
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="shop.php">SHOP</a>
-                        </li>
-                    </div>
-                    <div class="text-nowrap">
-                        <li class="nav-item">
+                        </div>
+                    </li>
+                </div>
 
-                            <a class="nav-link text-white" href="petgallery.php">PET GALLERY</a>
+                <div class="text-nowrap">
+                    <li class="nav-item">
 
-                        </li>
-                    </div>
-                    <!-- <div class=" text-white">
+                        <a class="nav-link text-white" href="#imagesec">PET GALLERY</a>
+
+                    </li>
+                </div>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#about">ABOUT US</a>
+                    </li>
+                </div>
+
+
+
+
+                <!-- <div class=" text-white">
          <?php echo  date("m/d/y") . "<br>"; ?>
        </div> -->
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="login-user.php">SIGN IN</a>
-                        </li>
-                    </div>
+                <!--
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="login-user.php">SIGN IN</a>
+                    </li>
+                </div>
 
-                    <div class="text-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-white bg-primary" href="signup-user.php">SIGN UP</a>
-                        </li>
-                    </div>
-                </ul>
-            </div>
-        </nav>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="signup-user.php">SIGN UP</a>
+                    </li>
+                </div>
+            </ul>
+-->
+        </div>
+    </nav>
+
 
 
 
@@ -318,9 +336,9 @@
                                 <div class="col-4">Pet Birthday
                                     <div class="form-group mb-3">
                                         <!-- <label for=""></label> -->
-                                        <input type="month" id="start"  class="form-control" name="petbday[]" min="2000-03" value="2018-05">
+                                        <!-- <input type="number" min="1900" max="2099" step="1" value="2016" /> -->
                                         <!-- <input type="text" class="form-control" name="petbday[]" id="datepicker" /> -->
-                                        <!-- <input type="date" name="petbday" class="form-control" /> -->
+                                        <input type="date" name="petbday[]" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -358,7 +376,7 @@
             i++;
             $('#dynamic_field').append(
                 '<div class="rows border border-primary mt-2 p-3 rounded" id="row' + i +
-                '">  <div class="row inline"> <div class="col-4 form-group">Pet Type:<select class="form-control" name="pettype[]" value="<?php echo $pettype ?>"> <option value="" disabled selected>Select Pet Type</option><option value="Dog">Dog</option><option value="Cat">Cat</option></select></div><div class="col-4 form-group"> Pet Breed<input list="browsers" class="form-control" name="petbreed[]" id="browser"><datalist id="browsers"><option value="american bully"><option value="chowchow"><option value="corgi"><option value="englishbulldog"><option value="frenchbulldog"><option value="abyssinian"><option value="siamese"><option value="golden retriever"><option value="pomeranian"><option value="poodle"><option value="pug"><option value="siberian husky"><option value="shittzu"></datalist></div><div class="col-4 form-group"> Pet Name<input class="form-control" type="text" name="petname[]" placeholder="Pet Name" required id="floatingAddress" autocomplete="off"></div></div><div class="row mt-2"><div class="col-4 form-group">Pet Sex:<select class="form-control" name="petsex[]"><option value="male">Male</option><option value="female">Female</option></select></div><div class="col-4">Pet Birthday<div class="form-group mb-3"><input type="month" id="start"  class="form-control" name="petbday[]" min="2000-03" value="2018-05"></div></div> </div><td><button type="button" name="remove" id="' +
+                '">  <div class="row inline"> <div class="col-4 form-group">Pet Type:<select class="form-control" name="pettype[]" value="<?php echo $pettype ?>"> <option value="" disabled selected>Select Pet Type</option><option value="Dog">Dog</option><option value="Cat">Cat</option></select></div><div class="col-4 form-group"> Pet Breed<input list="browsers" class="form-control" name="petbreed[]" id="browser"><datalist id="browsers"><option value="american bully"><option value="chowchow"><option value="corgi"><option value="englishbulldog"><option value="frenchbulldog"><option value="abyssinian"><option value="siamese"><option value="golden retriever"><option value="pomeranian"><option value="poodle"><option value="pug"><option value="siberian husky"><option value="shittzu"></datalist></div><div class="col-4 form-group"> Pet Name<input class="form-control" type="text" name="petname[]" placeholder="Pet Name" required id="floatingAddress" autocomplete="off"></div></div><div class="row mt-2"><div class="col-4 form-group">Pet Sex:<select class="form-control" name="petsex[]"><option value="male">Male</option><option value="female">Female</option></select></div><div class="col-4">Pet Birthday<div class="form-group mb-3"><input type="date" name="petbday[]" class="form-control" /></div></div> </div><td><button type="button" name="remove" id="' +
                 i + '" class="btn btn-danger btn_remove">Remove pet</button></td></tr>');
 
             $("#datepicker").datepicker({

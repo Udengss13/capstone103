@@ -78,9 +78,9 @@ $errors = array();
             if($data_check1){
                 $user_id = $con->insert_id;
                 foreach ($_POST['pettype'] as $key => $value) {
-
+                $petbday = date('Y-m-d', strtotime($_POST['petbday']));
                  $query1 = "INSERT INTO `pettable`(`user_id`, `pettype`, `petbreed`, `petname` ,`petsex`, `petbday`) 
-                 VALUES ('" . $user_id . "','" . $_POST['pettype'][$key] . "', '" . $_POST['petbreed'][$key] . "', '" . $_POST['petname'][$key] . "' , '" . $_POST['petsex'][$key] . "', '" .strtotime('m/y', $_POST['petbday'][$key]) . "')";
+                 VALUES ('" . $user_id . "','" . $_POST['pettype'][$key] . "', '" . $_POST['petbreed'][$key] . "', '" . $_POST['petname'][$key] . "' , '" . $_POST['petsex'][$key] . "', '" .date('Y-m-d', strtotime($_POST['petbday']))[$key] . "')";
                  $data_check = mysqli_query($con, $query1); 
                 }
           
@@ -149,7 +149,7 @@ $errors = array();
                 // $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
                  echo '<script> alert("You are now verified! You may now Login!");
-                        window.location.href="login-user.php";
+                        window.location.href="index.php";
                         </script>';
                 exit();
             }else{
@@ -162,6 +162,17 @@ $errors = array();
 
     //----------------------------------------------------------------------------
     //if user click login button
+    // if (isset($_SESSION["login_attempts"])) {
+        if(isset($_SESSION["locked"]))
+        {
+            $difference= time() - $_SESSION["locked"];
+            if($difference > 10){
+                unset($_SESSION["locked"]);
+                unset($_SESSION["login_attempts"]);
+            }
+        }
+// }
+
     if(isset($_POST['login'])){
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -173,30 +184,37 @@ $errors = array();
             $fetch = mysqli_fetch_assoc($res);
             $status = $fetch['status'];
             $user_level = $fetch['user_level'];
-            if($status == 'verified' and $user_level =='client'){
-                $_SESSION['user_id']= $fetch['id'];
-                $_SESSION['email'] = $email; 
-                $_SESSION['password'] = $password;
-                $_SESSION['user_level'] = 'client';
-                  header('location: home.php');
-              }
-              elseif($status == 'verified' and $user_level =='employee'){
-                $_SESSION['user_id']= $fetch['id'];
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['user_level'] = 'employee';
-                  header('location: employee-dashboard.php');
-              }
-              
-              else{
-                  $info = "It's look like you haven't still verify your email - $email";
-                  $_SESSION['info'] = $info;
-                  header('location: user-otp.php');
-              }
            
-        }else{
-            $errors['email'] = "Invalid email or password";
+                if($status == 'verified' and $user_level =='client'){
+                    $_SESSION['user_id']= $fetch['id'];
+                    $_SESSION['email'] = $email; 
+                    $_SESSION['password'] = $password;
+                    $_SESSION['user_level'] = 'client';
+                    header('location: home.php');
+                }
+                elseif($status == 'verified' and $user_level =='employee'){
+                    $_SESSION['user_id']= $fetch['id'];
+                    $_SESSION['email'] = $email;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['user_level'] = 'employee';
+                    header('location: employee-dashboard.php');
+                }
+                
+                else{
+                    $info = "It's look like you haven't still verify your email - $email";
+                    $_SESSION['info'] = $info;
+                    header('location: user-otp.php');
+                }
+
+            
+           
         }
+        else{
+            
+            // $_SESSION["login_attempts"] +=1;
+            $_SESSION["error"]= "Invalid email or password";
+        }
+       
         
     }
 
@@ -251,7 +269,8 @@ $errors = array();
             }else{
                 $errors['db-error'] = "Something went wrong!";
             }
-        }else{
+        }
+        else{
             $errors['email'] = "This email address does not exist!";
         }
     }
@@ -274,6 +293,80 @@ $errors = array();
             $errors['otp-error'] = "You've entered incorrect code!";
         }
     }
+
+    // if the employee cancel the appointment
+
+    if(isset($_POST['cancel_submit'])){
+        $id = $_POST['id'];
+        $email = $_POST['email'];
+
+        $approved_query = "UPDATE client_appointment SET `status`='cancelled' WHERE id='$id'";
+        $run_approved = mysqli_query($con, $approved_query);
+
+
+        if($run_approved){
+
+            $selects = mysqli_query($con, "SELECT  `email` FROM `client_appointment` WHERE id='$id'");
+            if(mysqli_num_rows($selects) > 0){
+            $fetchs = mysqli_fetch_assoc($selects); 
+            };
+
+            $mail = new PHPMailer(true);
+
+                $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'petcoanimalclinic@gmail.com';                     //SMTP username
+                    $mail->Password   = 'jnhffotwwjnftpft';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 465;   
+
+                    $mail->setFrom('from@example.com', 'Petco');
+                    $mail->addAddress($fetchs['email']);
+
+               
+
+                $mail->isHTML(true);
+                $mail->Subject='Appointment to petco has been cancelled';
+                $mail->Body='<h1> Good day! 
+                <br>
+                Hope you are doing well.
+                <br>
+                
+                As much as we want to cater to you our services, there are limited slots for our appointment. 
+                We appreciate your support of our business, you can change your schedule if you wanted to, and we will make sure to accommodate you on our working days. 
+                Thank you for your understanding. 
+                <br><br>
+
+                                         -Petco Animal Clinic
+                </h1>';
+                if($mail->send()){
+                    $info = "We've sent a reset password code to your email: Heloo";
+                   
+                    echo "<script>window.open('appointment_list.php','_self');</script>";
+                    
+                    exit();
+                }
+                else{
+                    $errors['otp-error'] = "Failed while sending code!";
+                }
+
+                if(!$mail->send()){
+                    echo "Message could not sent!";
+                }
+                else{
+                    echo"Message has been Sent";
+                }
+
+            }
+        else{
+                $errors['db-error'] = "Something went wrong!";
+            }
+        }
+
+            // echo "<script>window.open('appointment_list.php','_self');</script>";
+    //     }
+    // }
 
     //if user click change password button
     if(isset($_POST['change-password'])){
@@ -300,6 +393,6 @@ $errors = array();
     
    //if click login now button after change pass
     if(isset($_POST['login-now'])){
-        header('Location: login-user.php');
+        header('Location: index.php');
     }
 ?>

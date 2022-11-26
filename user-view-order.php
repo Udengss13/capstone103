@@ -4,7 +4,7 @@
       $user_id = $_SESSION['user_id'];
 
       if(!isset($user_id)){
-        header('location: login-user.php');
+        header('location: index.php');
       }
 
       $start_from = 0; 

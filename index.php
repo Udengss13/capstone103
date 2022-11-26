@@ -12,6 +12,8 @@
 <?php
   $quicktipsquery = "SELECT * FROM admin_quicktips"; //You dont need like you do in SQL;
   $quicktipsresult = mysqli_query($db_admin_account, $quicktipsquery);
+
+  
   ?>
 
 <!DOCTYPE html>
@@ -140,24 +142,16 @@
                 <h4 class="text-center">Please log-in you personal info</h4>
             </div>
             <div class="col-md-7 col-lg-4 col-sm-4 mt-5 form login-form">
-                <form action="login-user.php" method="POST" autocomplete="">
+                <form action="" method="POST" autocomplete="">
                     <h1 class="text-center  mt-3 text-primary">Sign In</h1>
 
                     <?php
-                        if(count($errors) > 0)
-                        {
-                            ?>
-                    <div class="alert alert-danger text-center">
-                        <?php
-                            foreach($errors as $showerror)
-                            {
-                                echo $showerror;
-                            }
-                             ?>
-                    </div>
-                    <?php
-                        }
-                        ?>
+                    
+                    if (isset($_SESSION["error"])){ ?>
+                        <div class="alert alert-danger bg-danger text-center text-white">
+                        <?=$_SESSION["error"]; ?> </div>
+
+                    <?php  unset($_SESSION["error"]); } ?>
                     <div class="form-group">
                         <input class="form-control mb-3" type="email" name="email" placeholder="Email Address" required
                             value="<?php echo $email ?>">
@@ -170,7 +164,9 @@
                             password?</a>
                     </div>
                     <div class="form-group">
+                       
                         <input class="form-control button" type="submit" name="login" value="Sign In">
+                           
                     </div>
                     <div class="link login-link text-center mb-1 mt-3">Don't have an account? <a
                             href="signup-user.php">Sign up
@@ -328,14 +324,40 @@
                                 <!--Padding is optional-->
                             </span>
                         </div>
-                        <div class="row box" style="height:300px;">
-                            <h4 style="color: white">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                                release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                                desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h4>
+                        <div class="row box">
+                            <div class="col bg-light p-4 rounded shadow">
+                                <h4 style=" text-align: justify">&emsp;PetCo. Animal Clinic was established in June
+                                    2021, and
+                                    they started offering services in their Grand Opening last July 3, 2021.
+                                    Mr. karl ken sto domingo
+                                    owned it. Domingo.
+                                    <br>&emsp;
+                                    It started with just an Idea of having a Pet Shop
+                                    because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.
+                                    Domingo’s
+                                    pets. He also sees that some people around their area have to go too far to find an
+                                    accessible Pet Clinic,
+                                    and that is where they started building the PetCo. Their intention to provide an
+                                    accessible
+                                    Pet Clinic around their area is why their ideas turned into a Clinic that offers
+                                    many
+                                    pet
+                                    services. The PetCo. Animal Clinic is currently residing at 389 Parada, Sta. Maria,
+                                    Bulacan,
+                                    their main branch.
+                                    <br>&emsp;PetCo. Animal Clinic specializes in Vaccination, Consultation,
+                                    Confinement, Surgery, Pet
+                                    Supplies, etc., for cats and dogs only.
+                                </h4>
+                            </div>
+                            <div class="col">
+                                <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
+                                    style="height:500px; width:100%;">
+                                <center>
+                                    <h5>Mr. karl ken sto domingo
+                                    </h5>
+                                </center>
+                            </div>
                         </div>
 
                         <!--ANNOUNCEMENT-->
