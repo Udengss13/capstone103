@@ -14,7 +14,7 @@
             <div class="col-md-4 offset-md-4 form">
                 <form action="forgot-password.php" method="POST" autocomplete="">
                     <h2 class="text-center">Forgot Password</h2>
-                    <p class="text-center">Enter your email address</p>
+                    <!-- <p class="text-center">Enter your email address</p> -->
                     <?php
                         if(count($errors) > 0){
                             ?>

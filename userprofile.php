@@ -254,6 +254,7 @@ $userresult = mysqli_query($con, $queryimage);
 
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </section>
 <!--Footer-->
@@ -280,6 +281,35 @@ $(document).ready(function() {
     $('#user-user').addClass('bg-primary');
 });
 </script>
+=======
+    </section>
+    <!--Footer-->
+    <footer class="footer-banner text-center" id="about">
+        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
+        <p class="text-white">Please contact us with the social links below.</p>
+        <div class="container" style="padding-top:100px;">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="follow" style="color: white;">
+                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                    </ul>
+                    <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    $(document).ready(function() {
+        $('#user-user').addClass('bg-primary');
+    });
+    </script>
+>>>>>>> 43f1d1421c780fbd0c522f0e4ed43ddeea86c938
 
 
 

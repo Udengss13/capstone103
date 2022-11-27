@@ -123,7 +123,7 @@
 
 
             <!--Displaying Data -->
-            <div class="container-fluid mt-4">
+            <div class="container-fluid mt-4 p-4 bg-light">
                 <table class="table table-striped table table-bordered">
                     <!-- <div class="row"> -->
                     <thead>
@@ -185,17 +185,17 @@
                                 <?php echo $rowmenu['Menu_category']; ?></div>
                         </td>
                         <td class="col-1">
-                            <div class="col">
-                                <a class="btn btn-warning  update"
+                        <div class="col">
+                                <a class="text-decoration-none c-green update"
                                     data-id="<?php echo $rowmenu['Menu_id']; ?>">
 
 
                                     <i class="fa-solid fa-pen" style="font-size:25px; padding: 10px"></i>
-                                    Update
+
                                 </a>
-                                <a class="btn btn-danger" href="php/menu-process.php?id=<?php echo $rowmenu['Menu_id'];?>">
+                                <a href="php/menu-process.php?id=<?php echo $rowmenu['Menu_id'];?>">
                                     <i class="fa-solid fa-trash-can"
-                                        style="font-size:25px; color:red; padding: 10px"></i> Delete
+                                        style="font-size:25px; color:red; padding: 10px"></i>
                                 </a>
                             </div>
 

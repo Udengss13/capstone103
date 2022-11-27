@@ -237,7 +237,7 @@
                 <div class="text-nowrap">
                     <li class="nav-item">
                         <a class="nav-link text-white" href="logout-user.php"
-                                onclick="return confirm('Are you sure do you want to sign out?')">LOG OUT</a>
+                                onclick="return confirm('Are you sure do you want to log out?')">LOG OUT</a>
                     </li>
                 </div>
 

@@ -138,7 +138,9 @@
                     </p>
                    
                         <!-- <label>Information:</label> -->
-                        <p class="c-white  m-5 " style="font-size: 20px; text-align: justify;"><?php echo $rowimage['Image_body']; ?></p>
+                        <ul>
+                        <li><p class="c-white  m-5 " style="font-size: 20px; text-align: justify;"><?php echo $rowimage['Image_body']; ?></p><li>
+                </ul>
                     </div>
                 </div>
             </div>

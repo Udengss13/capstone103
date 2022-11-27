@@ -366,21 +366,21 @@
 
 
 
-    <footer class=" footer-banner" id="about">
-        <div class="container text">
+    <footer class="footer-banner text-center" id="about">
+        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
+        <p class="text-white">Please contact us with the social links below.</p>
+        <div class="container" style="padding-top:100px;">
             <div class="row">
                 <div class="col-12 text-center">
-                    <ul class="follow">
-                        <h3>Please follow us</h3>
-
-                        <a href="https://www.facebook.com/"><img src="asset/facebook.png" width="50px"
-                                height="40px"></a>
-                        <a href="https://www.instagram.com//"><img src="asset/instagram.png" width="50px"
-                                height="40px"></a>
-                        <a href="https://www.messenger.com/"><img src="asset/messenger.png" width="50px"
-                                height="40px"></a>
+                    <ul class="follow" style="color: white;">
+                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
                     </ul>
-                    <h5>© 2022 All Rights Reserved. PetCo. Animal Clinic.</h5>
+                    <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
                 </div>
             </div>
         </div>
