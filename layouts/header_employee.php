@@ -182,11 +182,21 @@
                 </div>
                 <?php } ?>
 
+                <?php 
+                        $selectMessages = mysqli_query($con,"SELECT * FROM `messages` WHERE employee_id = '$user_id' AND seen = 0 AND sender_id != $user_id") or die ('query failed');
+                        $count_message = mysqli_num_rows($selectMessages);
+                    if(isset($user_id)){
+                     ?>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link text-white" id="message-menu" href="messages.php">MESSAGES</a>
+                        <a class="nav-link text-white  " href="messages.php">MESSAGE
+                            <?php if($count_message>0){ ?> <span
+                                class="badge badge-light mx-1 bg-danger text-light"><?php echo $count_message ?></span><?php } ?>
+                        </a>
+
                     </li>
                 </div>
+                <?php } ?>
                 <?php if($_SESSION['user_level']=='employee'){ ?>
                 <div class="text-nowrap">
                     <li class="nav-item">
