@@ -351,7 +351,7 @@
                             name="signup" value="Sign up">
                     </div>
                     <div class="link login-link text-center text-white">Already have an account? <a href="index.php"
-                            class="text-primary">Login here</a></div>
+                            class="text-primary">Sign in here</a></div>
             </form>
         </div>
 

@@ -111,49 +111,56 @@
     </section>
 
 
-    <section class="flex-sect" id="imagesec">
-        <section id="imagesection" class="div_background_light py-4">
-            <div class="container-fluid px-5 mt-3">
-                <div class="col-lg-12 col-md-12">
-                    <div class="justify-content-center row col-md-12 rounded-3">
-                    <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                        <span style="font-size: 40px; background-color:#9FBACD; color: white">
-                            ANNOUNCEMENT
-                            <!--Padding is optional-->
-                        </span>
-                    </div>
-                        
+     <!--ANNOUNCEMENT-->
+     <section class="flex-sect" id="imagesec">
+                            <section id="imagesection" class="div_background_light py-4">
+                                <div class="container-fluid px-5 mt-3">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="justify-content-center row col-md-12 rounded-3">
+                                            <h3 class="col-12  text-center fw-bolder"
+                                                style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
+                                                ANNOUNCEMENT</h3>
+                                            <hr>
 
-                        <!--Pictures-->
+                                            <!--Pictures-->
 
-                        <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
+                                            <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
 
-                        <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4" style="height:350px;">
+                                            <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4"
+                                                style="height:350px;">
 
 
-                            <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
-                                class="card-img-top pt-3 img-responsive " style="height:200px; width:100%;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">
-                                    <?php echo $rowimage['Image_title'] ?></h5>
-                               
-                                <p class="card-text d-inline-block text-truncate text-dark">
+                                                <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
+                                                    class="card-img-top pt-3 img-responsive "
+                                                    style="height:200px; width:100%;">
+                                                <div class="card-body d-flex flex-column">
+                                                    <h5 class="card-title text-center">
+                                                        <?php echo $rowimage['Image_title'] ?></h5>
+                                                    <h6 class="card-text text-center text-muted">
+                                                        <?php echo $rowimage['Image_subtitle'] ?>
+                                                    </h6>
+                                                    <!-- <p class="card-text d-inline-block text-truncate">
                                     <?php echo $rowimage['Image_body'];?>
-                                </p>
-                                <div class="mb-4">
-                                    <a href="user-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
-                                        class=" btn btn-success w-100">View Details</a>
+                                </p> -->
+                                                    <div class="mb-4">
+                                                        <a href="index-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
+                                                            class=" btn btn-success w-100">View Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <?php }?>
+
+
+                                        </div>
+                                    </div>
                                 </div>
-
-                            </div>
-                        </div>
-
-                        <?php }?>
-
-
                     </div>
                 </div>
             </div>
+
+
         </section>
     </section>
 
@@ -173,8 +180,8 @@
                                 <h4 style=" text-align: justify">&emsp;PetCo. Animal Clinic was established in June
                                     2021, and
                                     they started offering services in their Grand Opening last July 3, 2021.
-                                    Mr. karl ken sto domingo
-                                    owned it. Domingo. 
+                                    Mr. Karl Ken Sto Domingo
+                                    owned it.
                                     <br>&emsp;
                                     It started with just an Idea of having a Pet Shop
                                     because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.
@@ -198,7 +205,7 @@
                                 <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
                                     style="height:500px; width:100%;">
                                 <center>
-                                    <h5>Mr. karl ken sto domingo
+                                    <h5>Mr. Karl Ken Sto Domingo
                                     </h5>
                                 </center>
                             </div>
@@ -210,26 +217,24 @@
     </section>
 
 
-    <footer class=" footer-banner" id="about">
-        <div class="container text">
+    <footer class="footer-banner text-center" id="about">
+        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
+        <p class="text-white">Please contact us with the social links below.</p>
+        <div class="container" style="padding-top:100px;">
             <div class="row">
-                <div class="col-13 text-center">
+                <div class="col-12 text-center">
                     <ul class="follow" style="color: white;">
-                        <h3>Please follow us</h3>
-
-                        <a href="https://www.facebook.com/PetCoAnimalClinic"><img src="asset/facebook.png" width="40px"
-                                height="40px"></a>
-                        <a href="https://www.instagram.com//"><img src="asset/instagram.png" width="40px"
-                                height="40px"></a>
-                        <a href="https://www.messenger.com/"><img src="asset/messenger.png" width="40px"
-                                height="40px"></a>
+                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
+                        <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
+                                style="font-size:30px;padding:10px;"></span></a>
                     </ul>
-                    <h5>© 2022 All Rights Reserved. PetCo. Animal Clinic.</h5>
+                    <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
                 </div>
             </div>
         </div>
-
-
     </footer>
 
 
