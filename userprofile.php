@@ -162,14 +162,14 @@ $userresult = mysqli_query($con, $queryimage);
 <section class="flex-sect" id="imagesec">
     <div class="container mt-5">
         <div class="row">
-            <div class="col ">
-                <?php 
+
+            <?php 
                     $select_pet = mysqli_query($con, "SELECT * FROM pettable WHERE user_id = '$user_id'");
                    
 
                     while($row=$select_pet->fetch_assoc()):
                     ?>
-
+            <div class="col ">
                 <div class="col-lg-5 profilebg">
                     <!-- <div class="card mb-4">
                             <div class="card-body"> -->
@@ -254,62 +254,33 @@ $userresult = mysqli_query($con, $queryimage);
 
             </div>
         </div>
-<<<<<<< HEAD
-    </div>
 </section>
 <!--Footer-->
-<footer class=" footer-banner mt-5" id="about">
-    <div class="container text">
+<footer class="footer-banner text-center" id="about">
+    <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
+    <p class="text-white">Please contact us with the social links below.</p>
+    <div class="container" style="padding-top:100px;">
         <div class="row">
             <div class="col-12 text-center">
-                <ul class="follow">
-                    <h3>Please follow us</h3>
-
-                    <a href="https://www.facebook.com/"><img src="asset/facebook.png" width="50px" height="40px"></a>
-                    <a href="https://www.instagram.com//"><img src="asset/instagram.png" width="50px" height="40px"></a>
-                    <a href="https://www.messenger.com/"><img src="asset/messenger.png" width="50px" height="40px"></a>
+                <ul class="follow" style="color: white;">
+                    <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
+                    <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
+                    <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
                 </ul>
-                <h5>© 2022 All Rights Reserved. PetCo. Animal Clinic.</h5>
+                <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
             </div>
         </div>
     </div>
-
-
 </footer>
+
 <script>
 $(document).ready(function() {
     $('#user-user').addClass('bg-primary');
 });
 </script>
-=======
-    </section>
-    <!--Footer-->
-    <footer class="footer-banner text-center" id="about">
-        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
-        <p class="text-white">Please contact us with the social links below.</p>
-        <div class="container" style="padding-top:100px;">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <ul class="follow" style="color: white;">
-                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                        <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                        <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                    </ul>
-                    <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-    $(document).ready(function() {
-        $('#user-user').addClass('bg-primary');
-    });
-    </script>
->>>>>>> 43f1d1421c780fbd0c522f0e4ed43ddeea86c938
 
 
 

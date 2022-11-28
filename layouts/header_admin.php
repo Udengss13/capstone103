@@ -291,14 +291,14 @@
 </head>
 
 <body style="background:  #9FBACD;">
-<div class="nav-bar container-fluid overflow-hidden">
+    <div class="nav-bar container-fluid overflow-hidden">
         <div class="row vh-100 overflow-auto">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 d-flexs sticky-top">
                 <div
                     class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-                    <a href="/"
+                    <a href="admin-dashboards.php"
                         class="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"><img
-                            src="asset/logopet.png" alt="Saint Jude Logo"
+                            src="asset/logopet.png" alt=" petco"
                             style="width: 50px; padding-left: 10px; padding-top: 5px;">
                         <span class="navbar-brand">PETCO. ADMIN</span>
                     </a>
@@ -310,6 +310,12 @@
                                     class="ms-1 d-none d-sm-inline">Dashboard</span>
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a href="admin-services.php" class="nav-link align-middle px-0">
+                                <i class="fs-4 fa fa-briefcase"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Services</span>
+                            </a>
+                        </li> -->
                         <!-- <li class="nav-item">
                             <a href="quicktips_content.php" class="nav-link align-middle px-0">
                                 <i class="fs-4 	fa fa-file-video-o"></i> <span
@@ -323,24 +329,22 @@
                         $count_message = mysqli_num_rows($selectMessages);
                         ?>
                         <li>
-                            <a href="admin-message.php" class="nav-link px-sm-0 px-2">
-                                <i class="fs-4 fa fa-envelope text-white"></i><span class="ms-1 d-none d-sm-inline"> Messages
+                            <a href="admin-message.php" class="nav-link px-sm-0 px-1">
+                                <i class="fs-4 fa-regular fa-message text-white"></i><span class="ms-1 d-none d-sm-inline">
+                               
+                                    Messages
                                     <?php if($count_message>0){ ?><span
                                         class="badge badge-danger text-white bg-danger"><?php echo $count_message; ?></span><?php } ?></span>
                             </a>
                         </li>
 
-                        <li class="dropdown mb-2">
-                            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fs-4 bi-person-lines-fill"></i><span
-                                    class="ms-1 d-none d-sm-inline"> Accounts</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                                <!-- <li><a class="dropdown-item" href="#">Admin Accounts</a></li> -->
-                                <li><a class="dropdown-item" href="admin-user-accounts.php">User Accounts</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Employee Accounts</a></li> -->
-                            </ul>
+                        <li>
+
+
+                            <a class="nav-link px-sm-0 px-1" href="admin-user-accounts.php"><i
+                                    class="fs-4 fa-regular fa-user text-white"></i><span class="ms-1 d-none d-sm-inline">User Accounts</a>
+                                    <!-- <i class="fa-regular fa-user"></i> -->
+
                         </li>
                         <!-- <li class="nav-item">
                             <a href="#" class="nav-link px-sm-0 px-2">
@@ -356,6 +360,12 @@
                                 <li><a class="dropdown-item" href="archive-user.php">Owners</a></li>
                             </ul>
                         </li>
+
+                        <li class="nav-item mb-2">
+                            <a href="admin-orders.php" class="nav-link px-sm-0 px-1">
+                                <i class="fs-4 bi-bag-check"></i><span class="ms-1 d-none d-sm-inline">Orders</span>
+                            </a>
+                        </li>
                         <li class="dropdown mb-2">
                             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -363,18 +373,21 @@
                                     class="ms-1 d-none d-sm-inline">Content</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                                <li><a class="dropdown-item" href="admin-content.php"><i
-                                            class="fs-4   fa fa-bullhorn"></i> Announcement</a></li>
-                                <li><a class="dropdown-item" href="admin-slider.php"><i class="fs-4  fa-solid fa-map"></i> Slider</a></li>
+                                <li><a class="dropdown-item" href="admin-slider.php"><i
+                                            class="fs-4  fa-solid fa-map"></i> Slider</a></li>
                                 <li><a class="dropdown-item" href="quicktips_content.php"><i
                                             class="fs-4 	fa fa-file-video-o"></i> Quicktips</a> </li>
+                                <li><a class="dropdown-item" href="admin-content.php"><i
+                                            class="fs-4   fa fa-bullhorn"></i> Announcement</a></li>
+                                <li><a href="admin-services.php" class="dropdown-item">
+                                        <i class="fs-4   fa fa-briefcase"></i> <span class="">Services</span>
+                                    </a>
+                                </li>
+
+
+
                                 <!-- <li><a class="dropdown-item" href="admin-quicktips.php">Quicktips</a></li> -->
                             </ul>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="admin-orders.php" class="nav-link px-sm-0 px-2">
-                                <i class="fs-4 bi-bag-check"></i><span class="ms-1 d-none d-sm-inline">Orders</span>
-                            </a>
                         </li>
                     </ul>
                     <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">

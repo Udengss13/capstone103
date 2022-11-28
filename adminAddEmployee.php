@@ -30,7 +30,7 @@
                         class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
                         <a href="/"
                             class="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"><img
-                                src="asset/logopet.png" alt="Saint Jude Logo"
+                                src="asset/logopet.png" alt="petco"
                                 style="width: 50px; padding-left: 10px; padding-top: 5px;">
                             <span class="navbar-brand">PETCO. ADMIN</span>
                         </a>

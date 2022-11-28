@@ -10,8 +10,8 @@
     //this is for search name or id;
     if(isset($_GET['id'])){
         $user_id = $_GET['id'];
-        $query = "SELECT * FROM usertable WHERE first_name='$user_id' OR id='$user_id' OR email='$user_id'"; //You don't need a ; like you do in SQL
-        $result = mysqli_query($con, $query);
+        $query = "SELECT * FROM usertable WHERE first_name='$user_id' OR last_name='$user_id' OR id='$user_id' OR email='$user_id'"; //You don't need a ; like you do in SQL
+        $results = mysqli_query($con, $query);
     }else{
         $query = "SELECT * FROM usertable"; //You don't need a ; like you do in SQL
         $result = mysqli_query($con, $query);
@@ -61,6 +61,7 @@ require_once "controllerAdmin.php";
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/f8f3c8a43b.js" crossorigin="anonymous"></script>
 
 <title>Admin || User</title>
             <!---End of Aside-->
@@ -118,7 +119,7 @@ require_once "controllerAdmin.php";
                                     <th scope="col">Email</th>
                                     <th scope="col">User Level</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <!-- <th scope="col">Action</th> -->
                                 </thead>
 
                                 <tbody>
@@ -154,10 +155,10 @@ require_once "controllerAdmin.php";
                                             </td>
 
 
-                                            <td class="c-white text-nowrap"><button data-bs-toggle="modal"
+                                            <!-- <td class="c-white text-nowrap"><button data-bs-toggle="modal"
                                                     data-bs-target="#id<?php echo $row['id'];?>" type="button"
                                                     class="btn btn-outline-danger">Archive</button>
-                                            </td>
+                                            </td> -->
                                             <!-- Modal -->
                                             <div class="modal fade" id="id<?php echo $row['id'] ;?>" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">

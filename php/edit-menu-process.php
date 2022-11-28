@@ -9,6 +9,10 @@ session_start();
         $paragraph = nl2br($paragraph);
         $safe_input = mysqli_real_escape_string($con,$paragraph);
 
+        $subinfo = $_POST['subinfo'];
+        $subinfo = nl2br($subinfo);
+        $sub_input = mysqli_real_escape_string($con,$subinfo);
+
         $price = $_POST['price'];
         $category_name = $_POST['category_name'];
 
@@ -18,7 +22,7 @@ session_start();
          // move file to a folder
          if(move_uploaded_file($_FILES["photo"]["tmp_name"], $filenamedir))
          {
-          $query = "UPDATE admin_menu SET Menu_name = '$title', Menu_description = '$safe_input', 
+          $query = "UPDATE admin_menu SET Menu_name = '$title', subinfo = '$sub_input', Menu_description = '$safe_input', 
           Menu_price = '$price', Menu_category = '$category_name', 
           Menu_dir = '$filenamedir', Menu_filename = '$filename' WHERE Menu_id = '$menuid'";
           

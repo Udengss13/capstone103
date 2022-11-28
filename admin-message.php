@@ -1,6 +1,6 @@
 <?php
+require('layouts/header_admin.php');
     require_once "php/user-list-process.php";
-    require('layouts/header_admin.php');
     require('php/connection.php');
     
 
@@ -15,10 +15,8 @@
         
         $query = mysqli_query($con,"SELECT * FROM usertable  WHERE id = $id") or die ('query failed');
         $seQuery = mysqli_fetch_array($query);
-        $name = '';
-        if(isset($seQuery)){
-            $name = $seQuery['first_name'].' '.$seQuery['last_name'].' '.$seQuery['suffix'];
-        }
+        $name = $seQuery['first_name'].' '.$seQuery['last_name'].' '.$seQuery['suffix'];
+
         $returnHtml = '<input name="employee-id" value='.$id.' type="hidden" />
                         <div class="form-group" align="center">
                             <h5>'.$name.'</h5>
@@ -83,26 +81,27 @@
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/f8f3c8a43b.js" crossorigin="anonymous"></script>
+
 <title>Admin || Message</title>
 
 
 
-            <div class="col py-3 mt-5">
-                <div class="messaging">
-                    <div class="inbox_msg">
-                        <div class="inbox_people">
-                            <div class="headind_srch">
-                                <div class="recent_heading">
-                                    <h4>Messages</h4>
-                                </div>
-                                <div class="srch_bar">
-                                    <div class="stylish-input-group">
+    <div class="col py-3 mt-5">
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>Messages</h4>
+                        </div>
+                        <div class="srch_bar">
+                            <div class="stylish-input-group">
 
-                                    </div>
-                                </div>
                             </div>
-                            <div class="inbox_chat">
-                                <?php 
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <?php 
                         $chats = mysqli_query($con,"SELECT * FROM messages GROUP BY employee_id ORDER BY id DESC ") or die ('query failed');
                         // $selectQuery = mysqli_fetch_array($chats);
 
@@ -112,85 +111,84 @@
                             $selectMessageschat = mysqli_query($con,"SELECT * FROM `messages` WHERE employee_id = '$emp' AND seen = 0 AND sender_id = '$emp' ORDER BY id DESC") or die ('query failed');
                             $count_message_head = mysqli_num_rows($selectMessageschat);
                     ?>
-                                <a href="#" class="chat-head" data-id="<?php echo $chat_head['employee_id']; ?>">
-                                    <div class="chat_list active_chat">
-                                        <div class="chat_people">
-                                            <?php 
+                        <a href="#" class="chat-head" data-id="<?php echo $chat_head['employee_id']; ?>">
+                            <div class="chat_list active_chat">
+                                <div class="chat_people">
+                                    <?php 
                             $select_user = mysqli_query($con, "SELECT * FROM usertable WHERE id = '$emp'");
                             if(mysqli_num_rows($select_user) > 0){
                             $fetch_user = mysqli_fetch_assoc($select_user); 
                             };
                         ?>
-                                            <div class="chat_img"> <img style="width:100%;"
-                                                    src="asset/profiles/<?php echo $fetch_user['image_filename']?>"
-                                                    alt="sunil" class="rounded-circle"> </div>
-                                            <div class="chat_ib">
-                                                <h5><?php echo $chat_head['sender_name']; ?>
-                                                    <?php if($count_message_head>0){ ?><span
-                                                        class="badge badge-danger text-white bg-danger"
-                                                        style="margin-left: 9px;"><?php echo $count_message_head; ?></span><?php } ?>
-                                                    <span
-                                                        class="chat_date mr-3"><?php if(isset($chat_head['created_at'])){ echo date('M d,Y',strtotime($chat_head['created_at'])); } ?></span>
-                                                </h5>
-                                                <p><?php if(isset($chat_head['message'])){ echo $chat_head['message']; } ?>
-                                                </p>
-                                            </div>
-                                        </div>
+                                    <div class="chat_img"> <img style="width:100%;"
+                                            src="asset/profiles/<?php echo $fetch_user['image_filename']?>" alt="sunil"
+                                            class="rounded-circle"> </div>
+                                    <div class="chat_ib">
+                                        <h5><?php echo $chat_head['sender_name']; ?>
+                                            <?php if($count_message_head>0){ ?><span
+                                                class="badge badge-danger text-white bg-danger"
+                                                style="margin-left: 9px;"><?php echo $count_message_head; ?></span><?php } ?>
+                                            <span
+                                                class="chat_date mr-3"><?php if(isset($chat_head['created_at'])){ echo date('M d,Y',strtotime($chat_head['created_at'])); } ?></span>
+                                        </h5>
+                                        <p><?php if(isset($chat_head['message'])){ echo $chat_head['message']; } ?>
+                                        </p>
                                     </div>
-                                </a>
-                                <?php } ?>
+                                </div>
+                            </div>
+                        </a>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="mesgs">
+                    <form action="admin-message.php" method="post">
+                        <div class="msg_history" id="msg_history">
+
+
+                        </div>
+
+                        <div class="type_msg">
+                            <div class="input_msg_write">
+                                <input type="text" class="write_msg" required name="message"
+                                    placeholder="Type a message" />
+                                <button class="msg_send_btn" type="submit" name="submit-message"><i
+                                        class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <div class="mesgs">
-                            <form action="admin-message.php" method="post">
-                                <div class="msg_history" id="msg_history">
-
-
-                                </div>
-
-                                <div class="type_msg">
-                                    <div class="input_msg_write">
-                                        <input type="text" class="write_msg" required name="message"
-                                            placeholder="Type a message" />
-                                        <button class="msg_send_btn" type="submit" name="submit-message"><i
-                                                class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-
-
+                    </form>
                 </div>
-
-
             </div>
 
 
 
-            <!--DIVISION -->
+        </div>
 
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-                crossorigin="anonymous">
-            </script>
-            <script src="/js/script.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script>
-            $(document).ready(function(index) {
-                $(document).on('click', '.chat-head', function() {
-                    var id = $(this).data('id');
-                    $.post("admin-message.php", {
-                        action: 'chat-list',
-                        id: id
-                    }, function(data) {
-                        $('#msg_history').html(data);
-                    });
-                });
+    </div>
+
+
+
+    <!--DIVISION -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script src="/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(index) {
+        $(document).on('click', '.chat-head', function() {
+            var id = $(this).data('id');
+            $.post("admin-message.php", {
+                action: 'chat-list',
+                id: id
+            }, function(data) {
+                $('#msg_history').html(data);
             });
-            </script>
+        });
+    });
+    </script>
 </body>
 
 </html>

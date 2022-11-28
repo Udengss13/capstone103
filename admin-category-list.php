@@ -28,7 +28,7 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/"
                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"><img
-                            src="asset/logopet.png" alt="Saint Jude Logo"
+                            src="asset/logopet.png" alt="petco"
                             style="width: 60px; height: 50px; padding-top: 5px; padding-right: 5px;">
                         <span class="fs-5 d-none d-sm-inline">PETCO. ADMIN</span>
                     </a>

@@ -188,7 +188,7 @@
         </div>
     </div>
 
-<br><br>
+    <br><br>
 
 
 
@@ -319,6 +319,86 @@
     </section>
 
 
+
+
+    <!--ANNOUNCEMENT-->
+    <section class="flex-sect" id="imagesec">
+        <section id="imagesection" class="div_background_light py-4">
+            <div class="container-fluid px-5 mt-3">
+                <div class="col-lg-12 col-md-12">
+                    <div class="justify-content-center row col-md-12 rounded-3">
+                        <h3 class="col-12  text-center fw-bolder"
+                            style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
+                            ANNOUNCEMENT</h3>
+                        <hr>
+
+                        <!--Pictures-->
+
+                        <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
+
+                        <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4" style="height:350px;">
+
+
+                            <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
+                                class="card-img-top pt-3 img-responsive " style="height:200px; width:100%;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-center">
+                                    <?php echo $rowimage['Image_title'] ?></h5>
+                                <h6 class="card-text text-center text-truncate">
+                                    <?php echo $rowimage['Image_subtitle'] ?>
+                                </h6>
+                                <!-- <p class="card-text d-inline-block text-truncate">
+                                    <?php echo $rowimage['Image_body'];?>
+                                </p> -->
+                                <div class="mb-4">
+                                    <a href="index-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
+                                        class=" btn btn-success w-100">View Details</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <?php }?>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+        </section>
+    </section>
+    <section id="sevice-content" class="mb-5" style="background-color:#fafafa4f;">
+        <section id="imagesection" class="div_background_light py-4">
+            <div class="justify-content-center row col-md-12 rounded-3 mb-5">
+                <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                    <span style="font-size: 40px; background-color:#fafafa4f; color: black">
+                        SERVICES
+                    </span>
+                </div>
+            </div>
+            <div class="container-fluid px-5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <?php echo $service_content; ?>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <?php echo $service_desc; ?>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </section>
     <!-- About us -->
     <section class="flex-sect" id="about" style="background-color:#9FBACD;">
         <section id="imagesection" class="div_background_light py-4">
@@ -366,84 +446,8 @@
                                 </center>
                             </div>
                         </div>
-
-                        <!--ANNOUNCEMENT-->
-                        <section class="flex-sect" id="imagesec">
-                            <section id="imagesection" class="div_background_light py-4">
-                                <div class="container-fluid px-5 mt-3">
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="justify-content-center row col-md-12 rounded-3">
-                                            <h3 class="col-12  text-center fw-bolder"
-                                                style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
-                                                ANNOUNCEMENT</h3>
-                                            <hr>
-
-                                            <!--Pictures-->
-
-                                            <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
-
-                                            <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4"
-                                                style="height:350px;">
-
-
-                                                <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
-                                                    class="card-img-top pt-3 img-responsive "
-                                                    style="height:200px; width:100%;">
-                                                <div class="card-body d-flex flex-column">
-                                                    <h5 class="card-title text-center">
-                                                        <?php echo $rowimage['Image_title'] ?></h5>
-                                                    <h6 class="card-text text-center text-muted">
-                                                        <?php echo $rowimage['Image_subtitle'] ?>
-                                                    </h6>
-                                                    <!-- <p class="card-text d-inline-block text-truncate">
-                                    <?php echo $rowimage['Image_body'];?>
-                                </p> -->
-                                                    <div class="mb-4">
-                                                        <a href="index-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
-                                                            class=" btn btn-success w-100">View Details</a>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <?php }?>
-
-
-                                        </div>
-                                    </div>
-                                </div>
                     </div>
                 </div>
-            </div>
-
-
-        </section>
-    </section>
-    <section id="sevice-content" class="mb-5" style="background-color:#fafafa4f;">
-        <section id="imagesection" class="div_background_light py-4">
-            <div class="justify-content-center row col-md-12 rounded-3 mb-5">
-                <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                    <span style="font-size: 40px; background-color:#fafafa4f; color: black">
-                        SERVICES
-                    </span>
-                </div>
-            </div>
-            <div class="container-fluid px-5">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <?php echo $service_content; ?>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <?php echo $service_desc; ?>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </section>
     </section>

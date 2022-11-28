@@ -5,8 +5,13 @@
         $title = $_POST['title'];
         $paragraph = $_POST['paragraph'];
         $paragraph = nl2br($paragraph);
+       
         $expire = $_POST['expiration-date'];
         $safe_input = mysqli_real_escape_string($db_admin_account,$paragraph);
+
+        $subinfo = $_POST['subinfo'];
+        $subinfo = nl2br($subinfo);
+        $sub_input = mysqli_real_escape_string($db_admin_account,$subinfo);
 
         $price = $_POST['price'];
         $category_name = $_POST['category_name'];
@@ -18,8 +23,8 @@
         // move file to a folder
         if(move_uploaded_file($_FILES["photo"]["tmp_name"], $filenamedir))
         {
-            $sql = "INSERT INTO admin_menu (Menu_name, Menu_description, Menu_price, Menu_category,  Menu_dir, Menu_filename,expiration) 
-            VALUES('$title', '$safe_input', '$price', '$category_name', '$filenamedir', '$filename','$expire')";
+            $sql = "INSERT INTO admin_menu (Menu_name, subinfo, Menu_description, Menu_price, Menu_category,  Menu_dir, Menu_filename,expiration) 
+            VALUES('$title','$sub_input', '$safe_input', '$price', '$category_name', '$filenamedir', '$filename','$expire')";
             mysqli_query($con,$sql);            
             echo '<script> alert("Product Added Successfully");
                     window.location.href="../employee-menu.php";

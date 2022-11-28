@@ -62,6 +62,11 @@
                                             <input name="title" class="col-12" type="text" required>
                                         </li>
                                         <li class="list-group-item">
+                                            <label>Sub Info:</label>
+                                            <textarea name="subinfo" style="height:100px;" required
+                                                class="col-12"></textarea>
+                                        </li>
+                                        <li class="list-group-item">
                                             <label>Product Description:</label>
                                             <textarea name="paragraph" style="height:100px;" required
                                                 class="col-12"></textarea>
@@ -137,6 +142,9 @@
                                     <div class="col">Product Name</div>
                                 </th>
                                 <th scope="col" style="text-align: center;">
+                                    <div class="col">Product Sub Info</div>
+                                </th>
+                                <th scope="col" style="text-align: center;">
                                     <div class="col">Description</div>
                                 </th>
                                 <th scope="col" style="text-align: center;">
@@ -166,6 +174,10 @@
                         <td style="text-align: center;">
                             <div class="col">
                                 <?php echo $rowmenu['Menu_name']; ?></div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="col">
+                                <?php echo $rowmenu['subinfo']; ?></div>
                         </td>
                         <td style="text-align: center;">
                             <div class="col">
@@ -222,6 +234,11 @@
                                                     <label>Menu Name:</label>
                                                     <input class="col-4 mb-3" name="menuid" type="text" hidden>
                                                     <input name="title" id="utitle" class="col-12" type="text" required>
+                                                </li>
+                                                <li class=" list-group-item">
+                                                    <label>Menu Description:</label>
+                                                    <textarea name="subinfo" id="uinfo" style="height:100px;"
+                                                        required class="col-12"></textarea>
                                                 </li>
                                                 <li class=" list-group-item">
                                                     <label>Menu Description:</label>
@@ -297,9 +314,10 @@
                                 }, function(data) {
                                     var query = JSON.parse(data);
                                     $('#utitle').val(query[1]);
-                                    $('#uparagraph').val(query[2]);
+                                    $('#uinfo').val(query[2]);
+                                    $('#uparagraph').val(query[3]);
                                     $('#ucategory_name').val(query[4]);
-                                    $('#uprice').val(query[3]);
+                                    $('#uprice').val(query[5]);
                                     $('input[name="uexpiration-date"]').val(query['expiration']);
                                     console.log(query);
                                 });

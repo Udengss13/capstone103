@@ -77,7 +77,7 @@
 
 <body>
 
-   <!--Navigation Bar-->
+    <!--Navigation Bar-->
     <!--Navigation Bar-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -218,7 +218,7 @@
                     <form action="product.php" method="post">
                         <div class=" col-12 d-flex justify-content-center ">
                             <img class="img-responsive" src="asset/menu/<?php echo $rowimage['Menu_filename']; ?>"
-                            width="400vh" >
+                                width="400vh">
                         </div>
                 </div>
 
@@ -231,8 +231,8 @@
                         <h1 class=" c-blue display-6 ">
                             <?php echo $rowimage['Menu_name']; ?></h1>
                         <!--Price-->
-                        <p class=" text-light " style="font-size:20px">Php
-                            <?php echo $rowimage['Menu_price']; ?>
+                        <p class=" text-light " style="font-size:30px">Php
+                            <?php echo $rowimage['Menu_price']; ?>.00
                         </p>
                         <!--Price-->
                         <!-- <p class="text-muted " style="font-size:20px">Category
@@ -256,22 +256,50 @@
                             <div class="news-body">
 
                                 <p class="c-white mb-5 " style="font-size: 20px">
+                                    <?php echo $rowimage['subinfo']; ?></p>
+                                <p class="c-white mb-5 " style="font-size: 20px">
                                     <?php echo $rowimage['Menu_description']; ?></p>
                             </div>
-                            <input type="submit" name="add_to_cart" value="Add to Cart"
-                                class="btn btn-danger bg-button text w-50">
+
+                            <!-- <input type="button" onclick="decrementValue()" value="-" />
+                            <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                            <input type="button" onclick="incrementValue()" value="+" /> -->
+                            <!-- <input type="number" name="update_quantity" min="1" max="10" value=""class="col-5 prc"> -->
 
                         </div>
-                    </div>
-                    </form>
+                        <input type="submit" name="add_to_cart" value="Add to Cart"
+                            class="btn btn-danger bg-button text w-50">
 
-                    <?php } ?>
+                    </div>
                 </div>
+                </form>
+
+                <?php } ?>
             </div>
+        </div>
     </section>
 
-    </div>
 
+    <script type="text/javascript">
+    function incrementValue() {
+        var value = parseInt(document.getElementById('number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value < 10) {
+            value++;
+            document.getElementById('number').value = value;
+        }
+    }
+
+    function decrementValue() {
+        var value = parseInt(document.getElementById('number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            document.getElementById('number').value = value;
+        }
+
+    }
+    </script>
 
 
 
