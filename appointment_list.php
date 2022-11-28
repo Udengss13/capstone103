@@ -186,15 +186,15 @@
        <!-- ====================================================================================================== -->
      
         <?php
-            if(isset($_POST['approved_submit'])){
-                $id = $_POST['id'];
+            // if(isset($_POST['approved_submit'])){
+            //     $id = $_POST['id'];
 
-                $approved_query = "UPDATE client_appointment SET `status`='approved' WHERE id='$id'";
-                $run_approved = mysqli_query($con, $approved_query);
-                if($run_approved){
-                    echo "<script>window.open('appointment_list.php','_self');</script>";
-                }
-            }
+            //     $approved_query = "UPDATE client_appointment SET `status`='approved' WHERE id='$id'";
+            //     $run_approved = mysqli_query($con, $approved_query);
+            //     if($run_approved){
+            //         echo "<script>window.open('appointment_list.php','_self');</script>";
+            //     }
+            // }
             // if(isset($_POST['cancel_submit'])){
             //     $id = $_POST['id'];
 

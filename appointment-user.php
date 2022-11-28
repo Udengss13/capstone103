@@ -50,14 +50,20 @@ $userresult = mysqli_query($con, $queryimage);
 
             $sql = "INSERT INTO `client_appointment`( `service`, `appoint_no`, `appoint_date`, `appoint_time`, `petname`, `user_id`, `email`) 
             VALUES ('$service','$appno','$appointdate','$appointtime','$petname','$user_id', '$email')";
+           
 
-            if(mysqli_query($con, $sql)){
-                
-                echo '<script>
-                alert("Thank You! Your reservation has been made $petname!);
-                window.location.href="appointment-user.php";
-                </script>';
-            }
+            // if(mysqli_query($con, $sql)){
+               if(mysqli_query($con,$sql))    {        
+                echo '<script> alert("Thank You! Your reservation has been made !");
+                        window.location.href="appointment-user.php";
+                        </script>';
+           } // }
+            // else{
+            //     echo '<script>
+            //     alert("Something went wrong please try again later!);
+            //     window.location.href="appointment-user.php";
+            //     </script>';
+            // }
                 
         
             

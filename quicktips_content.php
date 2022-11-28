@@ -89,82 +89,84 @@
 
 
 
-            <div class="col py-3 mt-5 p-5">
-            <div class="container pt-5">
-            <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header row">
-                                <div class="col-md-6">
-                                    Quicktips
-                                </div>
-                                <div class="col-md-6" align="right">
-                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Quicktips</button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>link</th>
-                                                <th>Service</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <?php 
+<div class="col py-3 mt-5 p-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header row">
+                        <div class="col-md-6">
+                            Quicktips
+                        </div>
+                        <div class="col-md-6" align="right">
+                            <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+                                data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Quicktips</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>link</th>
+                                        <th>Service</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <?php 
                                             $querymenu = "SELECT * FROM quicktips"; 
                                             $resultmenu = mysqli_query($con, $querymenu);  
                                             while($rowmenu =  mysqli_fetch_array($resultmenu)){
                                         ?>
-                                        <tr>
-                                            <td><?php echo $rowmenu['link']; ?></td>
-                                            <td><?php echo $rowmenu['category']; ?></td>
-                                            <td><a class="btn btn-sm btn-danger delete" data-id="<?php echo $rowmenu['id']; ?>"><span class="fa fa-times"></span></a> </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
-                                </div>
-                            </div>
+                                <tr>
+                                    <td><?php echo $rowmenu['link']; ?></td>
+                                    <td><?php echo $rowmenu['category']; ?></td>
+                                    <td><a class="btn btn-sm btn-danger delete" data-id="<?php echo $rowmenu['id']; ?>"><span class="fa fa-times"></span></a> </td>
+                                </tr>
+                                <?php } ?>
+                            </table>
                         </div>
                     </div>
+                </div>
             </div>
-              <!-- ====================================================================================================== -->
-            <div id="add-modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add Quicktips Link</h5>
+        </div>
+        <!-- ====================================================================================================== -->
+        <div id="add-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Quicktips Link</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-form" method="POST">
+                            <div class="form-group mb-3">
+                                <label>Link</label>
+                                <input class="form-control" type="text" required name="link" />
                             </div>
-                            <div class="modal-body">
-                                <form id="add-form" method="POST">
-                                    <div class="form-group mb-3">
-                                        <label>Link</label>
-                                        <input class="form-control" type="text" required name="link"/>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label>Services</label>
-                                        <select class="form-control" required name="service">
-                                            <option value="">Select Service</option>
-                                            <?php
+                            <div class="form-group mb-3">
+                                <label>Services</label>
+                                <select class="form-control" required name="service">
+                                    <option value="">Select Service</option>
+                                    <?php
                                                  $query_service = "SELECT * FROM `service`"; 
                                                  $result_service = mysqli_query($con, $query_service);  
                                                  while($row_service =  mysqli_fetch_array($result_service)){
                                             ?>
-                                            <option value="<?php echo $row_service['service_name'] ?>"><?php echo $row_service['service_name'] ?></option>
+                                    <option value="<?php echo $row_service['service_name'] ?>">
+                                        <?php echo $row_service['service_name'] ?></option>
 
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </form>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success" name="submit-link" form="add-form">Submit</button>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" name="submit-link" form="add-form">Submit</button>
                     </div>
                 </div>
+            </div>
+        </div>
         <?php
             if(isset($_POST['submit-link'])){
                 $link = $_POST['link'];
@@ -175,40 +177,52 @@
                     echo "<script>window.open('quicktips_content.php','_self');</script>";
                 }
             }
+            
             if(isset($_POST['delete_submit'])){
                 $id = $_POST['id'];
                 $del_query = "DELETE FROM quicktips WHERE id = '$id'";
                 $result = mysqli_query($con, $del_query);
+
+                if($result){
+
+                echo '<script> alert("Quicktips Deleted Succesfully");
+                window.location.href="quicktips_content.php";
+                </script>';
+                }
                
             }   
             
         ?>
-       <!-- ====================================================================================================== -->
-       </div>
-                
-            </div>
+        <!-- ====================================================================================================== -->
+    </div>
+
+</div>
 
 
 
-            <!--DIVISION -->
+<!--DIVISION -->
 
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-                crossorigin="anonymous">
-            </script>
-            <script src="/js/script.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script>
-            $(document).ready(function(index) {
-                $(document).on('click','.delete',function(){
-                    var id = $(this).data('id');
-                    $.post("quicktips_content.php",{delete_submit:'delte',id:id},function(data){
-                        location.reload();
-                    });
-                });
-            });
-            </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</script>
+<script src="/js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(index) {
+    $(document).on('click', '.delete', function() {
+        var id = $(this).data('id');
+        // onclick="return confirm('Are you sure do you want to log out?')"
+        $.post("quicktips_content.php", {
+            // onclick="return confirm('Are you sure do you want to log out?')"
+            delete_submit: 'delte',
+            id: id
+        }, function(data) {
+            location.reload();
+        });
+    });
+});
+</script>
 </body>
 
 </html>
