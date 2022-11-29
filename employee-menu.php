@@ -184,7 +184,7 @@
                                 <?php echo $rowmenu['Menu_description']; ?></div>
                         </td>
                         <td class="col-1" style="text-align: center;">
-                            <div class="col">
+                            <div class="col">Php
                                 <?php echo $rowmenu['Menu_price']; ?></div>
                         </td>
                         <td class="col-1" style="text-align: center;">
@@ -236,7 +236,7 @@
                                                     <input name="title" id="utitle" class="col-12" type="text" required>
                                                 </li>
                                                 <li class=" list-group-item">
-                                                    <label>Menu Description:</label>
+                                                    <label>Sub Info:</label>
                                                     <textarea name="subinfo" id="uinfo" style="height:100px;"
                                                         required class="col-12"></textarea>
                                                 </li>
