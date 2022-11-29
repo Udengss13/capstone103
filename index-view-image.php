@@ -126,8 +126,8 @@
             <div class="row ">
                 <?php while($rowimage =  mysqli_fetch_array($resultimage)){ ?>
                 <div class="col-12  justify-content-center  mt-4">
-                    <img class="img-responsive"src="asset/homepage/<?php echo $rowimage['Image_filename']; ?>"
-                        width="100%" height="500px">
+                    <center><img class="img-responsive shadow rounded"src="asset/homepage/<?php echo $rowimage['Image_filename']; ?>"
+                        width="80%" height="500px"></center>
                         <div class="news-body img-body mt-4 p-3">
                     <!--Name-->
                     <h1 class="text-center c-green display-8 " style="color: ;">

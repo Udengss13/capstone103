@@ -200,7 +200,19 @@
                 <?php if($_SESSION['user_level']=='employee'){ ?>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#imagesec">MY PROFILE</a>
+                    <?php 
+                            $select_user = mysqli_query($con, "SELECT * FROM usertable WHERE id = '$user_id'");
+                            if(mysqli_num_rows($select_user) > 0){
+                            $fetch_user = mysqli_fetch_assoc($select_user); 
+                            };
+                        ?>
+                        <a class="nav-link text-white" id="user-user" href="userprofile.php"><img
+                                src="asset/profiles/<?php echo $fetch_user['image_filename']?>" alt="user"
+                                style=" margin-left: 10px" width="28" height="28" class="rounded-circle">
+                            <span
+                                class="d-none d-sm-inline mx-2">EMPLOYEE</span>
+                        </a>
+                        <!-- <a class="nav-link text-white" href="#imagesec">MY PROFILE</a> -->
                     </li>
                 </div>
 

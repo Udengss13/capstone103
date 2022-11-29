@@ -261,7 +261,7 @@
                 $str = $rowmenu['link'];
                 $code = explode("?v=",$str);
                 $tab_option .= '<div class="col-md-4">
-                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/'.$code[1].'"></iframe>
+                                    <iframe width="100%" class="shadow vid" height="500" src="https://www.youtube.com/embed/'.$code[1].'"></iframe>
                                 </div>';
              }
             
@@ -385,11 +385,11 @@
                     <div class="col-md-3">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
-                            <?php echo $service_content; ?>
+                            &emsp;<?php echo $service_content; ?>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-content text-justify" id="v-pills-tabContent">
                             <?php echo $service_desc; ?>
                         </div>
                     </div>
@@ -459,7 +459,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <ul class="follow" style="color: white;">
-                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                        <a href="https://www.facebook.com/PetCoAnimalClinic"><span class="fab fa-facebook text-white"
                                 style="font-size:30px;padding:10px;"></span></a>
                         <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
                                 style="font-size:30px;padding:10px;"></span></a>

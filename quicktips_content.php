@@ -140,7 +140,7 @@
                     <div class="modal-body">
                         <form id="add-form" method="POST">
                             <div class="form-group mb-3">
-                                <label>Link</label>
+                                <label>Link (e.g https://www.youtube.com...)</label>
                                 <input class="form-control" type="text" required name="link" />
                             </div>
                             <div class="form-group mb-3">

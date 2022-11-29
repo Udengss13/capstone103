@@ -6,7 +6,7 @@
 }
 body{
   background:  #9FBACD;
-  background:  #8dacc35a;
+  background:  #59809e5a;
 }
 .logo{
   width:22%;
@@ -291,4 +291,10 @@ color: red;
 /* profile Edit */
 .ff{
   height: 40px;
+}
+
+/* quicktips */
+.vid:hover{
+  transform: scale(1.1);
+
 }
