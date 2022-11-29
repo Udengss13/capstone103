@@ -55,5 +55,17 @@
         </script>'; 
     }
 
+ //For deleting quicktips by ID
+    if(isset($_POST['delete_submit'])){
+        $id = $_POST['id'];
+        $del_query = "DELETE FROM quicktips WHERE id = '$id'";
+        $result = mysqli_query($con, $del_query);
+
+        // echo '<script> alert("Product Deleted Succesfully");
+        // window.location.href=" quicktips_content.php";
+        // </script>'; 
+       
+    } 
+
     
 ?>

@@ -207,7 +207,7 @@
                                 </a>
                                 <a href="php/menu-process.php?id=<?php echo $rowmenu['Menu_id'];?>">
                                     <i class="fa-solid fa-trash-can"
-                                        style="font-size:25px; color:red; padding: 10px"></i>
+                                        style="font-size:25px; color:red; padding: 10px" onclick="return confirm('Are you sure you want to delete this product?')"></i>
                                 </a>
                             </div>
 

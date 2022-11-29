@@ -77,12 +77,10 @@
 
 <body>
 
-    <!--Navigation Bar-->
-    <!--Navigation Bar-->
-    <nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-light ; ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="asset/logopet.png" alt="Logo" style="width:22%; height:8vh" />
+                <img src="asset/logopet.png" alt="Logo" class="logo" />
                 <span style="text-shadow: 2px 2px 2px  rgba(49, 44, 44, 0.767);" class="text-white"><b>PETCO. ANIMAL
                         CLINIC</b></span>
             </a>
@@ -90,77 +88,111 @@
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
         </div>
 
         <div class="collapse navbar-collapse me-3" id="navbarScroll">
             <ul class="navbar-nav me-auto my-0 my-lg-0 " style="--bs-scroll-height: 100px;">
-
-
+                <?php if($_SESSION['user_level']=='employee'){ ?>
                 <div class="text-nowrap">
                     <li class="nav-item">
-
-                        <a class="nav-link  text-white mt-3" aria-current="page" href="home.php">HOME</a>
+                        <a class="nav-link text-white" id="home-menu" style="border-radius:10px;" aria-current="page"
+                            href="employee-dashboard.php">HOME</a>
+                    </li>
+                </div>
+                <?php  }else{ ?>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" id="home-menu" style="border-radius:10px;" aria-current="page"
+                            href="home.php">HOME</a>
+                    </li>
+                </div>
+               
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" id="appointment-menu" href="appointment-user.php">APPOINTMENT</a>
+                    </li>
+                </div>
+                <?php } ?>
+                <?php if($_SESSION['user_level']=='employee'){ ?>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white " id="product-menu" href="employee-menu.php">PRODUCTS</a>
                     </li>
                 </div>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link text-white mt-3" href="#about">ABOUT US</a>
+                        <a class="nav-link text-white " id="list-appointment-menu"
+                            href="appointment_list.php">APPOINTMENT LIST</a>
+                    </li>
+                </div>
+
+
+                <?php  }else{ ?>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="home.php#imagesec">PET GALLERY</a>
                     </li>
                 </div>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="nav-link text-white dropdown-toggle mt-3" href="#" id="dropdownMenuLink"
-                                data-bs-toggle="dropdown" aria-expanded="false">SERVICES</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Vaccination</a></li>
-                                <li><a class="dropdown-item" href="#">Confinement</a></li>
-                                <li><a class="dropdown-item" href="#">Pet Supplies</a></li>
-                                <li><a class="dropdown-item" href="#">Consultation</a></li>
-                                <li><a class="dropdown-item" href="#">Surgery</a></li>
-                                <li><a class="dropdown-item" href="#">Treatment</a></li>
-                                <li><a class="dropdown-item" href="#">Deworming</a></li>
-                                <li><a class="dropdown-item" href="#">Grooming</a></li>
-                                <li><a class="dropdown-item" href="#">Laboratory Tests</a></li>
-
-                            </ul>
-
-                        </div>
+                        <a class="nav-link text-white " id="shop-user" href="product.php">SHOP</a>
                     </li>
                 </div>
-                <div class="text-nowrap">
-                    <li class="nav-item">
-                        <a class="nav-link text-white mt-3 bg-primary" href="product.php">SHOP</a>
-                    </li>
-                </div>
-
-                <!-- <div class="text-nowrap">
-                    <li class="nav-item">
-                        <a href="userprofile.php" class="nav-link text-white"><img src=" asset/picon.png" alt="PETCO"
-                                style="width: 40px;"></a>
-                    </li>
-                </div> -->
 
                 <?php 
                     $select_rows = mysqli_query($con,"SELECT * FROM `cart` WHERE Cart_user_id = '$user_id'") or die ('query failed');
                     $row_count = mysqli_num_rows($select_rows);
                   ?>
                 <div class="text-nowrap">
-                    <li class="nav-item mt-3">
+                    <li class="nav-item">
+                    <a class="nav-link text-white  " id="cart-user-user" href="cart.php">CART
+                            <?php if($row_count>0){ ?> <span
+                                class="badge badge-light mx-1 bg-light text-dark"><?php echo $row_count ?></span><?php } ?>
 
-                        <a class="nav-link text-white" href="#imagesec">PET GALLERY</a>
+                        </a>
 
                     </li>
                 </div>
+                <?php } ?>
 
+                <?php if($_SESSION['user_level']=='employee'){ ?>
                 <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link text-white mt-3" href="cart.php">CART<span
-                                class="badge badge-light mx-1 bg-light text-dark"><?php echo $row_count ?></span></a>
+                        <a class="nav-link text-white " id="available-appointment-menu"
+                            href="employee-appointment.php">AVAILABLE APPOINTMENT</a>
+                    </li>
+                </div>
+                <?php } ?>
+
+                <?php 
+                        $selectMessages = mysqli_query($con,"SELECT * FROM `messages` WHERE employee_id = '$user_id' AND seen = 0 AND sender_id != $user_id") or die ('query failed');
+                        $count_message = mysqli_num_rows($selectMessages);
+                    if(isset($user_id)){
+                     ?>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white  " href="messages.php">MESSAGE
+                            <?php if($count_message>0){ ?> <span
+                                class="badge badge-light mx-1 bg-danger text-light"><?php echo $count_message ?></span><?php } ?>
+                        </a>
 
                     </li>
                 </div>
+                <?php } ?>
+                <?php if($_SESSION['user_level']=='employee'){ ?>
+                <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#imagesec">MY PROFILE</a>
+                    </li>
+                </div>
 
+                <?php  }else{ ?>
+                    <div class="text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="home.php#about">ABOUT US</a>
+                    </li>
+                </div>
                 <div class="text-nowrap">
                     <li class="nav-item">
                         <?php 
@@ -169,37 +201,33 @@
                             $fetch_user = mysqli_fetch_assoc($select_user); 
                             };
                         ?>
+                        <a class="nav-link text-white" id="user-user" href="userprofile.php"><img
+                                src="asset/profiles/<?php echo $fetch_user['image_filename']?>" alt="user"
+                                style=" margin-left: 10px" width="28" height="28" class="rounded-circle">
+                            <span
+                                class="d-none d-sm-inline mx-2">MY PROFILE</span>
+                        </a>
+
                         <!-- <p class="nav-link text-white">
                             <?php echo $fetch_user['first_name']." ". $fetch_user['last_name']; ?></p> -->
                     </li>
                 </div>
-                <div class="dropdown mb-2 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1 ">
-
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="asset/profiles/<?php echo $fetch_user['image_filename']?>" alt="user"
-                            style=" margin-left: 10px" width="28" height="28" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-2"><?php echo $fetch_user['first_name']?></span>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">yes</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="userprofile.php">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="logout-user.php"
-                                onclick="return confirm('Are you sure do you want to sign out?')">Sign out</a></li>
-                    </ul>
-                </div>
-                <!-- <div class="text-nowrap">
+               
+                <?php } ?>
+               
+         <!-- <?php echo  date("m/d/y") . "<br>"; ?> -->
+       <!-- </div> --> 
+                <div class="text-nowrap">
                     <li class="nav-item">
-                        <a class="nav-link  text-white mt-2" href="logout-user.php"
-                            onclick="return confirm('Are you sure do you want to logout?')">LOGOUT</a>
+                        <a class="nav-link text-white" href="logout-user.php"
+                                onclick="return confirm('Are you sure do you want to log out?')">LOG OUT</a>
                     </li>
-                </div> -->
-            </ul>
+                </div>
+
+
+                </li>
+        </div>
+        </ul>
         </div>
     </nav>
 

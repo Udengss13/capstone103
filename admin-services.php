@@ -88,103 +88,109 @@
 
 
 
-            <div class="col py-3 mt-5 p-5">
-            <div class="container pt-5">
-            <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header row">
-                                <div class="col-md-6">
-                                    Services
-                                </div>
-                                <div class="col-md-6" align="right">
-                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Service</button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Service</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <?php 
+<div class="col py-3 mt-5 p-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header row">
+                        <div class="col-md-6">
+                            Services
+                        </div>
+                        <div class="col-md-6" align="right">
+                            <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+                                data-bs-target="#add-modal"><span class="fa fa-plus"></span> Add Service</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <?php 
                                             $querymenu = "SELECT * FROM `service`"; 
                                             $resultmenu = mysqli_query($con, $querymenu);  
                                             while($rowmenu =  mysqli_fetch_array($resultmenu)){
                                         ?>
-                                        <tr>
-                                            <td><?php echo $rowmenu['service_name']; ?></td>
-                                            <td><?php echo $rowmenu['description']; ?></td>
-                                            <td>
-                                                <a class="btn btn-sm btn-danger delete" data-id="<?php echo $rowmenu['service_id']; ?>"><span class="fa fa-times"></span></a> 
-                                                <a class="btn btn-sm btn-warning update" data-id="<?php echo $rowmenu['service_id']; ?>"><span class="fa fa-pencil text-white"></span></a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
-                                </div>
-                            </div>
+                                <tr>
+                                    <td><?php echo $rowmenu['service_name']; ?></td>
+                                    <td><?php echo $rowmenu['description']; ?></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-danger delete"
+                                            data-id="<?php echo $rowmenu['service_id']; ?>"><span
+                                                class="fa fa-times"></span></a>
+                                        <a class="btn btn-sm btn-warning update"
+                                            data-id="<?php echo $rowmenu['service_id']; ?>"><span
+                                                class="fa fa-pencil text-white"></span></a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </table>
                         </div>
                     </div>
+                </div>
             </div>
-              <!-- ====================================================================================================== -->
-            <div id="add-modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add Service</h5>
+        </div>
+        <!-- ====================================================================================================== -->
+        <div id="add-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Service</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-form" method="POST">
+                            <div class="form-group mb-3">
+                                <label>Service</label>
+                                <input class="form-control" type="text" required name="name" />
                             </div>
-                            <div class="modal-body">
-                                <form id="add-form" method="POST">
-                                    <div class="form-group mb-3">
-                                        <label>Service</label>
-                                        <input class="form-control" type="text" required name="name"/>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label>Description</label>
-                                        <textarea id="summernote" class="form-control" name="description" ></textarea>
-                                    </div>
-                                   
-                                </form>
+                            <div class="form-group mb-3">
+                                <label>Description</label>
+                                <textarea id="summernote" class="form-control" name="description"></textarea>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success" name="submit-link" form="add-form">Submit</button>
-                            </div>
-                        </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" name="submit-link" form="add-form">Submit</button>
                     </div>
                 </div>
-                <div id="update-modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Update Service</h5>
+            </div>
+        </div>
+        <div id="update-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Service</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update-form" method="POST">
+                            <div class="form-group mb-3">
+                                <label>Service</label>
+                                <input class="form-control" type="text" required name="uname" />
+                                <input class="form-control" type="hidden" name="service-id" />
                             </div>
-                            <div class="modal-body">
-                                <form id="update-form" method="POST">
-                                    <div class="form-group mb-3">
-                                        <label>Service</label>
-                                        <input class="form-control" type="text" required name="uname"/>
-                                        <input class="form-control" type="hidden" name="service-id"/>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label>Description</label>
-                                        <textarea id="usummernote" class="form-control" name="udescription" ></textarea>
-                                    </div>
-                                   
-                                </form>
+                            <div class="form-group mb-3">
+                                <label>Description</label>
+                                <textarea id="usummernote" class="form-control" name="udescription"></textarea>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success" name="update-submit" form="update-form">Submit</button>
-                            </div>
-                        </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" name="update-submit"
+                            form="update-form">Submit</button>
                     </div>
                 </div>
+            </div>
+        </div>
         <?php
             if(isset($_POST['submit-link'])){
                 $name = $_POST['name'];
@@ -192,7 +198,10 @@
                 $insertavailable = "INSERT INTO `service` (`service_name`,`description`) VALUES ('$name','$description')";
                 $run_query = mysqli_query($con, $insertavailable);
                 if($run_query){
-                    echo "<script>window.open('admin-services.php','_self');</script>";
+                    echo '<script>
+                    alert("Service inserted Successfully!");
+                    window.location.href="admin-services.php";
+                    </script>';
                 }
             }
             if(isset($_POST['update-submit'])){
@@ -204,65 +213,78 @@
                 $run_querys = mysqli_query($con, $updateQuery);
                 
                 if($run_querys){
+                    echo '<script>
+                    alert("Update Service Successfully!");
+                    window.location.href="admin-services.php";
+                    </script>';
                  
-                    echo "<script>window.open('admin-services.php','_self');</script>";
+                    // echo "<script>window.open('admin-services.php','_self');</script>";
                 }
             }
             if(isset($_POST['delete_submit'])){
                 $id = $_POST['id'];
                 $del_query = "DELETE FROM `service` WHERE service_id = '$id'";
                 $result = mysqli_query($con, $del_query);
+
+                echo '<script>
+                alert("Delete Service Successfully!");
+                window.location.href="admin-services.php";
+                </script>';
                
             }   
             
         ?>
-       <!-- ====================================================================================================== -->
-       </div>
-                
-            </div>
+        <!-- ====================================================================================================== -->
+    </div>
+
+</div>
 
 
 
-            <!--DIVISION -->
-            
-           
+<!--DIVISION -->
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-                crossorigin="anonymous">
-            </script>
-            <script src="/js/script.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-            <script>
-            $(document).ready(function(index) {
-                $('#summernote').summernote({
-                    height:400
-                });
-                $(document).on('click','.delete',function(){
-                    var id = $(this).data('id');
-                    console.log(id);
-                    $.post("admin-services.php",{delete_submit:'delte',id:id},function(data){
-                        location.reload();
-                    });
-                });
-                $('#usummernote').summernote({
-                            height:400
-                        });
-                $(document).on('click','.update',function(){
-                    var id = $(this).data('id');
-                    $('input[name="service-id"]').val(id);
-                    $.post("service_data.php",{id:id},function(data){
-                        var new_data = JSON.parse(data);
-                        $('input[name="uname"]').val(new_data['service_name']);
-                        // $('textarea[name="udescription"]').val(new_data['description']);
-                       
-                        $("#usummernote").summernote("code", new_data['description']);
-                    });
-                    $('#update-modal').modal('show');
-                });
-            });
-            </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</script>
+<script src="/js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+$(document).ready(function(index) {
+    $('#summernote').summernote({
+        height: 400
+    });
+    $(document).on('click', '.delete', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        $.post("admin-services.php", {
+            delete_submit: 'delte',
+            id: id
+        }, function(data) {
+            location.reload();
+        });
+    });
+    $('#usummernote').summernote({
+        height: 400
+    });
+    $(document).on('click', '.update', function() {
+        var id = $(this).data('id');
+        $('input[name="service-id"]').val(id);
+        $.post("service_data.php", {
+            id: id
+        }, function(data) {
+            var new_data = JSON.parse(data);
+            $('input[name="uname"]').val(new_data['service_name']);
+            // $('textarea[name="udescription"]').val(new_data['description']);
+
+            $("#usummernote").summernote("code", new_data['description']);
+        });
+        $('#update-modal').modal('show');
+    });
+});
+</script>
 </body>
 
 </html>

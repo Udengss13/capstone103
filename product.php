@@ -173,7 +173,7 @@
 <?php   
           if(isset($_GET['select_category'])){
            $filtervalues = $_GET['select_category']; 
-           $querysearchmenu = mysqli_query($con,"SELECT * FROM admin_menu WHERE CONCAT(Menu_id, Menu_name, Menu_price, Menu_category,Menu_filename) LIKE '%$filtervalues%'"); //You dont need like you do in SQL;
+           $querysearchmenu = mysqli_query($con,"SELECT * FROM admin_menu WHERE CONCAT(Menu_id, Menu_name, Menu_price, Menu_category,Menu_filename) LIKE '%$filtervalues%' AND DATE(expiration)>NOW()"); //You dont need like you do in SQL;
                    
            if(mysqli_num_rows($querysearchmenu)>0 ){
                     ?>
@@ -193,9 +193,9 @@
                         class="card-img-top  img-responsive " style="height:13rem; width:100%;"></a>
 
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title text-center"><?php echo $fetch_product['Menu_name']?></h5>
+                    <h6 class="card-title text-center"><?php echo $fetch_product['Menu_name']?></h6>
 
-                    <p class="card-text d-inline-block text-truncate mt-1">
+                    <p class="card-text d-inline-block text-truncate text-dark mt-1">
                         <?php echo $fetch_product['subinfo'] ?>
                     </p>
 
@@ -253,7 +253,7 @@
 <?php   
                 if(isset($_GET['search'])){
                 $filtervalues = $_GET['search']; 
-                $querysearchmenu = mysqli_query($con,"SELECT * FROM admin_menu WHERE CONCAT(Menu_name, Menu_price, Menu_category) LIKE '%$filtervalues%'"); //You dont need like you do in SQL;
+                $querysearchmenu = mysqli_query($con,"SELECT * FROM admin_menu WHERE CONCAT(Menu_name, Menu_price, Menu_category) LIKE '%$filtervalues%' AND DATE(expiration)>NOW()"); //You dont need like you do in SQL;
                         
                     if(mysqli_num_rows($querysearchmenu)>0 ){
                         ?>
@@ -273,10 +273,10 @@
                         class="card-img-top  img-responsive " style="height:13rem; width:100%;"></a>
 
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title text-center"><?php echo $fetch_product['Menu_name']?></h5>
+                    <h6 class="card-title text-center"><?php echo $fetch_product['Menu_name']?></h6>
 
-                    <p class="card-text d-inline-block text-truncate mt-1">
-                        <?php echo $fetch_product['Menu_description'] ?>
+                    <p class="card-text d-inline-block text-truncate text-dark mt-1">
+                        <?php echo $fetch_product['subinfo'] ?>
                     </p>
 
                     <div class="row">
@@ -332,7 +332,7 @@
 <?php   
                 if(!isset($_GET['search']) && !isset($_GET['select_category'])){
                 // $filtervalues = $_GET['search']; 
-                $menu = mysqli_query($con,"SELECT * FROM admin_menu"); //You dont need like you do in SQL;
+                $menu = mysqli_query($con,"SELECT * FROM admin_menu where DATE(expiration)>NOW()"); //You dont need like you do in SQL;
                 // DATE(expiration)>NOW()"
                     if(mysqli_num_rows($menu)>0 ){
                         ?>

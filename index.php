@@ -441,8 +441,9 @@
                                 <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
                                     style="height:500px; width:100%;">
                                 <center>
-                                    <h5>Mr. Karl Ken Sto Domingo
+                                    <h5 class="mt-4 text-white">Mr. Karl Ken Sto Domingo
                                     </h5>
+                                    <h6 class="text-muted">Owner</h6>
                                 </center>
                             </div>
                         </div>

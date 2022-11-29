@@ -367,6 +367,71 @@ $errors = array();
             // echo "<script>window.open('appointment_list.php','_self');</script>";
     //     }
     // }
+ // if the employee Approved the appointment
+    if(isset($_POST['approved_submit'])){
+        $id = $_POST['id'];
+
+        $approved_query = "UPDATE client_appointment SET `status`='approved' WHERE id='$id'";
+        $run_approved = mysqli_query($con, $approved_query);
+
+        if($run_approved){
+            // echo "<script>window.open('appointment_list.php','_self');</script>";
+            $selects = mysqli_query($con, "SELECT  `email` FROM `client_appointment` WHERE id='$id'");
+            if(mysqli_num_rows($selects) > 0){
+            $fetchs = mysqli_fetch_assoc($selects); 
+            };
+
+            $mail = new PHPMailer(true);
+
+                $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'petcoanimalclinic@gmail.com';                     //SMTP username
+                    $mail->Password   = 'jnhffotwwjnftpft';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 465;   
+
+                    $mail->setFrom('from@example.com', 'Petco');
+                    $mail->addAddress($fetchs['email']);
+
+               
+
+                $mail->isHTML(true);
+                $mail->Subject='Appointment to petco has been Approved';
+                $mail->Body='<h1> Good day! 
+                <br>
+                Hope you are doing well.
+                <br>
+                
+                We are happy to tell you that your appointment has been approved  
+                <br><br>
+
+                                         -Petco Animal Clinic
+                </h1>';
+                if($mail->send()){
+                    $info = "We've sent a reset password code to your email: Heloo";
+                   
+                    echo "<script>window.open('appointment_list.php','_self');</script>";
+                    
+                    exit();
+                }
+                else{
+                    $errors['otp-error'] = "Failed while sending code!";
+                }
+
+                if(!$mail->send()){
+                    echo "Message could not sent!";
+                }
+                else{
+                    echo"Message has been Sent";
+                }
+
+            }
+        else{
+                $errors['db-error'] = "Something went wrong!";
+            }
+        }
+    
 
     //if user click change password button
     if(isset($_POST['change-password'])){

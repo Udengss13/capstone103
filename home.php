@@ -26,16 +26,16 @@
 
 
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/product.css">
+<link rel="stylesheet" type="text/css" href="css/product.css">
 
 
-    <!-- SLIDER Images -->
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+<!-- SLIDER Images -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-<!-- Indicators/dots -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <?php 
+    <!-- Indicators/dots -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <?php 
       $i=0;
       foreach($result as $row){
         $actives ='';
@@ -44,38 +44,38 @@
         }
       
       ?>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?=$i; ?>"
-            class="<?=$actives; ?>" aria-current="true" aria-label="Slide 1"></button>
-        <?php $i++;} ?>
-    </div>
-    <div class="carousel-inner">
-        <?php 
-      $i=0;
-      foreach($result as $row){
-        $actives ='';
-        if($i==0){
-          $actives= 'active';
-        }
-      
-      ?>
-        <div class="carousel-item <?= $actives; ?>">
-            <img src="<?= $row['image_path'] ?>" class="img-fluid mt-5" width="100%" height="500px">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?=$i; ?>"
+                class="<?=$actives; ?>" aria-current="true" aria-label="Slide 1"></button>
+            <?php $i++;} ?>
         </div>
+        <div class="carousel-inner">
+            <?php 
+      $i=0;
+      foreach($result as $row){
+        $actives ='';
+        if($i==0){
+          $actives= 'active';
+        }
+      
+      ?>
+            <div class="carousel-item <?= $actives; ?>">
+                <img src="<?= $row['image_path'] ?>" class="img-fluid mt-5" width="100%" height="500px">
+            </div>
 
-        <?php $i++; } ?>
+            <?php $i++; } ?>
 
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 </div>
 <?php 
  $query_service = "SELECT * FROM `service`"; 
@@ -121,36 +121,36 @@
 
 <!--QUICKTIPS-->
 <section class="flex-sect" id="imagesec">
-<section id="imagesection" class="div_background_light py-4">
-    <div class="container-fluid px-5">
-        <div class="col-lg-12 col-md-12">
-            <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                <span style="font-size: 40px; background-color:#9FBACD; color: white">
-                    QUICKTIPS
-                    <!--Padding is optional-->
-                </span>
-            </div>
-            <div class=" row  mt-5 mb-5 ml-5" align="center">
-                <div class="col-md-2">
-
+    <section id="imagesection" class="div_background_light py-4">
+        <div class="container-fluid px-5">
+            <div class="col-lg-12 col-md-12">
+                <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                    <span style="font-size: 40px; background-color:#9FBACD; color: white">
+                        QUICKTIPS
+                        <!--Padding is optional-->
+                    </span>
                 </div>
-                <div class="col-md-8">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <?php echo $tab_content; ?>
-                    </ul>
+                <div class=" row  mt-5 mb-5 ml-5" align="center">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <?php echo $tab_content; ?>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
                 </div>
-                <div class="col-md-2">
-
+                <div class="tab-content" id="pills-tabContent">
+                    <?php echo $tab_desc; ?>
                 </div>
-            </div>
-            <div class="tab-content" id="pills-tabContent">
-                <?php echo $tab_desc; ?>
-            </div>
 
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 </section>
 
 
@@ -158,167 +158,161 @@
 
 <!--ANNOUNCEMENT-->
 <section class="flex-sect" id="imagesec">
-<section id="imagesection" class="div_background_light py-4">
-    <div class="container-fluid px-5 mt-3">
-        <div class="col-lg-12 col-md-12">
-            <div class="justify-content-center row col-md-12 rounded-3">
-                <h3 class="col-12  text-center fw-bolder"
-                    style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
-                    ANNOUNCEMENT</h3>
-                <hr>
+    <section id="imagesection" class="div_background_light py-4">
+        <div class="container-fluid px-5 mt-3">
+            <div class="col-lg-12 col-md-12">
+                <div class="justify-content-center row col-md-12 rounded-3">
+                    <h3 class="col-12  text-center fw-bolder"
+                        style="text-shadow: 3px 1px 3px  lightblue; color: rgb(13, 13, 103)">
+                        ANNOUNCEMENT</h3>
+                    <hr>
 
-                <!--Pictures-->
+                    <!--Pictures-->
 
-                <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
+                    <?php while($rowimage = mysqli_fetch_array($resultimage)) {?>
 
-                <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4" style="height:350px;">
+                    <div class="col-lg-3 col-xs-1 col-sm-5 card mx-3 my-4" style="height:350px;">
 
 
-                    <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
-                        class="card-img-top pt-3 img-responsive " style="height:200px; width:100%;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">
-                            <?php echo $rowimage['Image_title'] ?></h5>
-                        <h6 class="card-text text-center text-muted">
-                            <?php echo $rowimage['Image_subtitle'] ?>
-                        </h6>
-                        <!-- <p class="card-text d-inline-block text-truncate">
+                        <img src="asset/homepage/<?php echo $rowimage['Image_filename'] ?>"
+                            class="card-img-top pt-3 img-responsive " style="height:200px; width:100%;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">
+                                <?php echo $rowimage['Image_title'] ?></h5>
+                            <h6 class="card-text text-center text-muted">
+                                <?php echo $rowimage['Image_subtitle'] ?>
+                            </h6>
+                            <!-- <p class="card-text d-inline-block text-truncate">
                             <?php echo $rowimage['Image_body'];?>
                         </p> -->
-                        <div class="mb-4">
-                            <a href="index-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
-                                class=" btn btn-success w-100">View Details</a>
+                            <div class="mb-4">
+                                <a href="index-view-image.php?id=<?php echo $rowimage['Image_id'] ?>"
+                                    class=" btn btn-success w-100">View Details</a>
+                            </div>
+
                         </div>
-
                     </div>
+
+                    <?php }?>
+
+
                 </div>
-
-                <?php }?>
-
-
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-
-</section>
+    </section>
 </section>
 <section id="sevice-content" class="mb-5" style="background-color:#fafafa4f;">
-<section id="imagesection" class="div_background_light py-4">
-    <div class="justify-content-center row col-md-12 rounded-3 mb-5">
-        <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-            <span style="font-size: 40px; background-color:#fafafa4f; color: black">
-                SERVICES
-            </span>
-        </div>
-    </div>
-    <div class="container-fluid px-5">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                    aria-orientation="vertical">
-                    <?php echo $service_content; ?>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <?php echo $service_desc; ?>
-                </div>
+    <section id="imagesection" class="div_background_light py-4">
+        <div class="justify-content-center row col-md-12 rounded-3 mb-5">
+            <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                <span style="font-size: 40px; background-color:#fafafa4f; color: black">
+                    SERVICES
+                </span>
             </div>
         </div>
+        <div class="container-fluid px-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <?php echo $service_content; ?>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <?php echo $service_desc; ?>
+                    </div>
+                </div>
+            </div>
 
 
-    </div>
-</section>
+        </div>
+    </section>
 </section>
 <!-- About us -->
 <section class="flex-sect" id="about" style="background-color:#9FBACD;">
-<section id="imagesection" class="div_background_light py-4">
-    <div class="container-fluid px-5">
-        <div class="col-lg-12 col-md-12">
-            <div class="justify-content-center row col-md-12 rounded-3">
-                <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
-                    <span style="font-size: 40px; background-color:#9FBACD; color: white">
-                        ABOUT US
-                        <!--Padding is optional-->
-                    </span>
-                </div>
-                <div class="row box">
-                    <div class="col bg-light p-4 rounded shadow">
-                        <h4 style=" text-align: justify">&emsp;PetCo. Animal Clinic was established in June
-                            2021, and
-                            they started offering services in their Grand Opening last July 3, 2021.
-                            Mr. Karl Ken Sto Domingo
-                            owned it.
-                            <br>&emsp;
-                            It started with just an Idea of having a Pet Shop
-                            because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.
-                            Domingo’s
-                            pets. He also sees that some people around their area have to go too far to find an
-                            accessible Pet Clinic,
-                            and that is where they started building the PetCo. Their intention to provide an
-                            accessible
-                            Pet Clinic around their area is why their ideas turned into a Clinic that offers
-                            many
-                            pet
-                            services. The PetCo. Animal Clinic is currently residing at 389 Parada, Sta. Maria,
-                            Bulacan,
-                            their main branch.
-                            <br>&emsp;PetCo. Animal Clinic specializes in Vaccination, Consultation,
-                            Confinement, Surgery, Pet
-                            Supplies, etc., for cats and dogs only.
-                        </h4>
+    <section id="imagesection" class="div_background_light py-4">
+        <div class="container-fluid px-5">
+            <div class="col-lg-12 col-md-12">
+                <div class="justify-content-center row col-md-12 rounded-3">
+                    <div style="width: 100%; height: 30px; border-bottom: 2px solid white; text-align: center">
+                        <span style="font-size: 40px; background-color:#9FBACD; color: white">
+                            ABOUT US
+                            <!--Padding is optional-->
+                        </span>
                     </div>
-                    <div class="col">
-                        <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
-                            style="height:500px; width:100%;">
-                        <center>
-                            <h5>Mr. Karl Ken Sto Domingo
-                            </h5>
-                        </center>
+                    <div class="row box">
+                        <div class="col bg-light p-4 rounded shadow">
+                            <h4 style=" text-align: justify">&emsp;PetCo. Animal Clinic was established in June
+                                2021, and
+                                they started offering services in their Grand Opening last July 3, 2021.
+                                Mr. Karl Ken Sto Domingo
+                                owned it.
+                                <br>&emsp;
+                                It started with just an Idea of having a Pet Shop
+                                because he has a friend who is a Veterinarian, and he’s the one injecting Mr. Sto.
+                                Domingo’s
+                                pets. He also sees that some people around their area have to go too far to find an
+                                accessible Pet Clinic,
+                                and that is where they started building the PetCo. Their intention to provide an
+                                accessible
+                                Pet Clinic around their area is why their ideas turned into a Clinic that offers
+                                many
+                                pet
+                                services. The PetCo. Animal Clinic is currently residing at 389 Parada, Sta. Maria,
+                                Bulacan,
+                                their main branch.
+                                <br>&emsp;PetCo. Animal Clinic specializes in Vaccination, Consultation,
+                                Confinement, Surgery, Pet
+                                Supplies, etc., for cats and dogs only.
+                            </h4>
+                        </div>
+                        <div class="col">
+                            <img src="asset/profiles/ownerpetco.jpg" class="card-img-top pt-3 img-responsive "
+                                style="height:500px; width:100%;">
+                            <center>
+                                <h5>Mr. Karl Ken Sto Domingo
+                                </h5>
+                            </center>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<footer class="footer-banner text-center" id="about">
+    <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
+    <p class="text-white">Please contact us with the social links below.</p>
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-12 text-center">
+                <ul class="follow" style="color: white;">
+                    <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
+                    <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
+                    <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
+                            style="font-size:30px;padding:10px;"></span></a>
+                </ul>
+                <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
             </div>
         </div>
     </div>
-</section>
-</section>
-
-    <footer class="footer-banner text-center" id="about">
-        <h1 class="text-white" style="padding-top:20px;">PetCo. Animal Clinic</h1>
-        <p class="text-white">Please contact us with the social links below.</p>
-        <div class="container" style="padding-top:100px;">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <ul class="follow" style="color: white;">
-                        <a href="https://www.facebook.com/"><span class="fab fa-facebook text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                        <a href="https://www.instagram.com//"><span class="fab fa-instagram text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                        <a href="https://www.twitter.com/"><span class="fab fa-twitter text-white"
-                                style="font-size:30px;padding:10px;"></span></a>
-                    </ul>
-                    <label class="text-white">© 2022 All Rights Reserved. PetCo. Animal Clinic.</label>
-                </div>
-            </div>
-        </div>
-    </footer>
+</footer>
 
 
 
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-                            crossorigin="anonymous">
-                        </script>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#home-menu').addClass('bg-primary');
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#home-menu').addClass('bg-primary');
+});
+</script>
 
 </body>
 
