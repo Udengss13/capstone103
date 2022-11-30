@@ -68,8 +68,8 @@
                                                         <td><?php echo $row_pending['petname']; ?></td>
                                                         <td><?php echo $row_pending['service']; ?></td>
                                                         <td>
-                                                            <a class="btn btn-sm btn-info approved" data-id="<?php echo $row_pending['id']; ?>"><span class="fa fa-thumbs-o-up"></span></a> 
-                                                            <a class="btn btn-sm btn-danger cancel" data-id="<?php echo $row_pending['id']; ?>"><span class="fa fa-times"></span></a>
+                                                            <a class="btn btn-sm btn-info approved" data-id="<?php echo $row_pending['id']; ?>"><span class="fa fa-thumbs-o-up" data-bs-toggle="tooltip" data-bs-placement="bottom" title="approve"></span></a> 
+                                                            <a class="btn btn-sm btn-danger cancel" data-id="<?php echo $row_pending['id']; ?>"><span class="fs-5 fa fa-times" data-bs-toggle="tooltip" data-bs-placement="bottom" title="cancel"></span></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -105,8 +105,8 @@
                                                         <td><?php echo $row_approved['petname']; ?></td>
                                                         <td><?php echo $row_approved['service']; ?></td>
                                                         <td>
-                                                            <a class="btn btn-sm btn-success serve" data-id="<?php echo $row_approved['id']; ?>"><span class="fa fa-check"></span></a> 
-                                                            <a class="btn btn-sm btn-danger cancel" data-id="<?php echo $row_approved['id']; ?>"><span class="fa fa-times"></span></a>
+                                                            <a class="btn btn-sm btn-success serve" data-id="<?php echo $row_approved['id']; ?>"><span class="fa fa-check" data-bs-toggle="tooltip" data-bs-placement="bottom" title="served"></span></a> 
+                                                            <a class="btn btn-sm btn-danger cancel" data-id="<?php echo $row_approved['id']; ?>"><span class="fs-5 fa fa-times" data-bs-toggle="tooltip" data-bs-placement="bottom" title="cancel"></span></a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -253,6 +253,14 @@
             
         });
     </script>
+
+<script>
+// Initialize tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
 
 </body>
 
